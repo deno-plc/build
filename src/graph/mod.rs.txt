@@ -1,0 +1,90 @@
+use std::{path::PathBuf, sync::Arc};
+
+use deno_graph::{
+    FillFromLockfileOptions, ModuleGraph, ModuleSpecifier,
+    source::{LoadError, LoadResponse, Loader},
+};
+use deno_lockfile::{Lockfile, NewLockfileOptions};
+
+#[derive(Debug)]
+pub struct GraphServer {
+    pub module_graph: ModuleGraph,
+    pub lockfile: Lockfile,
+}
+
+impl GraphServer {
+    pub async fn new(dir: PathBuf) -> Self {
+        let lockfile = dir.join("deno.lock");
+        let content = tokio::fs::read_to_string(&lockfile).await.unwrap();
+
+        let mut s = Self {
+            module_graph: ModuleGraph::new(deno_graph::GraphKind::CodeOnly),
+            lockfile: Lockfile::new_current_version(NewLockfileOptions {
+                file_path: lockfile,
+                content: &content,
+                overwrite: false,
+                next_version: false,
+            })
+            .unwrap(),
+        };
+
+        fill_graph_from_lockfile(&mut s.module_graph, &s.lockfile);
+
+        s
+    }
+}
+
+fn fill_graph_from_lockfile(graph: &mut ModuleGraph, lockfile: &deno_lockfile::Lockfile) {
+    graph.fill_from_lockfile(FillFromLockfileOptions {
+        redirects: lockfile
+            .content
+            .redirects
+            .iter()
+            .map(|(from, to)| (from.as_str(), to.as_str())),
+        package_specifiers: lockfile
+            .content
+            .packages
+            .specifiers
+            .iter()
+            .map(|(dep, id)| (dep, id.as_str())),
+    });
+}
+
+pub struct FsLoader {
+    // root: PathBuf,
+}
+
+impl FsLoader {
+    pub fn new(/* root: PathBuf */) -> Self {
+        Self { /* root */ }
+    }
+}
+impl Loader for FsLoader {
+    fn load(
+        &self,
+        specifier: &ModuleSpecifier,
+        options: deno_graph::source::LoadOptions,
+    ) -> deno_graph::source::LoadFuture {
+        if specifier.scheme() != "file" {
+            return Box::pin(async { Ok(None) });
+        }
+
+        let path = specifier.to_file_path().unwrap();
+        let specifier = specifier.clone();
+        Box::pin(async move {
+            let content = tokio::fs::read(&path).await.unwrap();
+            // let source = deno_graph::source::Source::new(
+            //     specifier.clone(),
+            //     content,
+            //     deno_media_type::MediaType,
+            //     options,
+            // );
+
+            Ok(Some(LoadResponse::Module {
+                content: Arc::from(content.into_boxed_slice()),
+                specifier: specifier,
+                maybe_headers: None,
+            }))
+        })
+    }
+}

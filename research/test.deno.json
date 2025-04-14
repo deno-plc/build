@@ -1,0 +1,99 @@
+{
+    "version": "4.0.0",
+    "tasks": {
+        "check": "deno fmt && deno lint --fix && deno test -A",
+        "check-ci": "deno fmt --check && deno lint && deno test -A",
+        "check:spell": "deno run -A npm:cspell@^8.17.5 lint .",
+        "backend": "deno run -A ./backend/main.ts",
+        "build": "deno run -A ./scripts/build.ts",
+        "dev": "deno run -A frontend/dev.ts",
+        "nats-local": "nats-server -c ./nats/testing.conf",
+        "nats-cluster": "nats-server -c ./nats/nats.conf"
+    },
+    "fmt": {
+        "indentWidth": 4,
+        "lineWidth": 120,
+        "exclude": [
+            "v3",
+            "dist",
+            "README.md"
+        ]
+    },
+    "nodeModulesDir": "auto",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+        "lib": [
+            "deno.window",
+            "deno.ns",
+            "ES2023",
+            "DOM",
+            "DOM.Iterable",
+            "DOM.AsyncIterable",
+            "webworker"
+        ]
+    },
+    "lint": {
+        "exclude": [
+            "target",
+            "v3",
+            "dist"
+        ]
+    },
+    "exclude": [
+        "v3",
+        "dist",
+        "target",
+        "README.md"
+    ],
+    "license": "GPL-3.0",
+    "imports": {
+        "@deno-plc/adapter-osc": "jsr:@deno-plc/adapter-osc@^1.1.1",
+        "@deno-plc/adapter-tcp": "jsr:@deno-plc/adapter-tcp@^1.1.0",
+        "@deno-plc/nats": "jsr:@deno-plc/nats@^0.3.3",
+        "@deno-plc/router": "jsr:@deno-plc/router@^0.0.2",
+        "@deno-plc/signal-utils": "jsr:@deno-plc/signal-utils@^0.0.5",
+        "@deno-plc/signals": "jsr:@deno-plc/signals@^0.0.2",
+        "@deno-plc/ui": "jsr:@deno-plc/ui@^0.0.8",
+        "@deno-plc/utils": "jsr:@deno-plc/utils@^0.2.0",
+        "@deno-plc/vite-plugin-deno": "jsr:@deno-plc/vite-plugin-deno@^2.3.3",
+        "@deno-plc/workbench": "jsr:@deno-plc/workbench@^0.0.2",
+        "@logtape/logtape": "jsr:@logtape/logtape@^0.8.2",
+        "@nats-io/nats-core": "jsr:@nats-io/nats-core@^3.0.0-51",
+        "@std/cli": "jsr:@std/cli@^1.0.13",
+        "@std/http": "jsr:@std/http@^1.0.13",
+        "@std/msgpack": "jsr:@std/msgpack@^1.0.3",
+        "ads-client": "npm:ads-client@^2.1.0",
+        "esbuild": "npm:esbuild@^0.25.1",
+        "hammerjs": "npm:hammerjs@^2.0.8",
+        "hono": "jsr:@hono/hono@^4.7.1",
+        "@luca/cases": "jsr:@luca/cases@^1.0.0",
+        "@prefresh/core": "npm:@prefresh/core@^1.5.3",
+        "@prefresh/utils": "npm:@prefresh/utils@^1.2.0",
+        "@prefresh/vite": "npm:@prefresh/vite@^2.4.7",
+        "@std/assert": "jsr:@std/assert@^1.0.11",
+        "@std/path": "jsr:@std/path@^1.0.8",
+        "@xterm/addon-fit": "npm:@xterm/addon-fit@^0.10.0",
+        "@xterm/xterm": "npm:@xterm/xterm@^5.5.0",
+        "preact": "npm:preact@^10.25.4",
+        "preact-render-to-string": "npm:preact-render-to-string@^6.5.13",
+        "rollup": "npm:rollup@^4.36.0",
+        "tailwindcss": "npm:tailwindcss@^4.0.14",
+        "vite": "npm:vite@^6.1.1",
+        "zod": "npm:zod@^3.24.2",
+        "@coderspirit/nominal": "npm:@coderspirit/nominal@^4.1.1",
+        "@std/encoding": "jsr:@std/encoding@^0.223.0",
+        "@std/fs": "jsr:@std/fs@^0.223.0",
+        "@std/semver": "jsr:@std/semver@^1.0.2",
+        "acorn": "npm:acorn@^8.12.1",
+        "acorn-walk": "npm:acorn-walk@^8.3.3",
+        "lebab": "npm:lebab@^3.2.4",
+        "resolve.exports": "npm:resolve.exports@^2.0.2",
+        "validate-npm-package-name": "npm:validate-npm-package-name@^5.0.1",
+        "interface/twincat": "./interfaces/twincat/variable.ts",
+        "schema/tf": "./interfaces/tf/tf.def.ts",
+        "schema/pjlink": "./interfaces/pjlink/pjlink.def.ts",
+        "schema/eos": "./interfaces/eos-osc/eos.def.ts",
+        "schema/twincat": "./backend/logic/logic.plc.util.ts"
+    }
+}

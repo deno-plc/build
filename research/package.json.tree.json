@@ -1,0 +1,4027 @@
+{
+    "strings": [
+        "./index.js",
+        "./source/index.js"
+    ],
+    "is_nullish": false,
+    ".": {
+        "strings": [
+            "./dist/remapping.umd.js",
+            "./cspell-default.config.js",
+            "./cspell-ext.json",
+            "./dist/index.js",
+            "./build/index.cjs",
+            "./dist/gen-mapping.umd.js",
+            "./dist/resolve-uri.umd.js",
+            "./dist/set-array.umd.js",
+            "./dist/sourcemap-codec.umd.js",
+            "./dist/trace-mapping.umd.js",
+            "./index.js",
+            "./dist/acorn.js",
+            "./dist/walk.js",
+            "./lib/main.js",
+            "./dist/eslint-visitor-keys.cjs",
+            "./dist/espree.cjs",
+            "./index.cjs"
+        ],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/types/remapping.d.ts",
+                "./lib/index.d.ts",
+                "./dist/types/gen-mapping.d.ts",
+                "./dist/types/resolve-uri.d.ts",
+                "./dist/types/set-array.d.ts",
+                "./dist/types/sourcemap-codec.d.ts",
+                "./dist/types/trace-mapping.d.ts",
+                "./lib/map.d.ts",
+                "./dist/signals.d.ts",
+                "./dist/signals-core.d.ts",
+                "./index.d.ts",
+                "./repeater.d.ts",
+                "./dist/index.d.ts",
+                "./mjs/index.d.ts",
+                "./types/lexer.d.ts",
+                "./types/index.d.ts",
+                "./fraction.d.ts",
+                "./build/index.d.ts",
+                "./src/index.d.ts",
+                "./lib/types.d.ts",
+                "./dist/rollup.d.ts",
+                "./dist/lib.d.mts",
+                "./dist/node/index.d.ts"
+            ],
+            "is_nullish": false,
+            "require": {
+                "strings": [
+                    "./index.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "import": {
+                "strings": [
+                    "./index.d.ts"
+                ],
+                "is_nullish": false
+            }
+        },
+        "browser": {
+            "strings": [
+                "./dist/remapping.umd.js",
+                "./dist/gen-mapping.umd.js",
+                "./dist/resolve-uri.umd.js",
+                "./dist/set-array.umd.js",
+                "./dist/sourcemap-codec.umd.js",
+                "./dist/trace-mapping.umd.js",
+                "./dist/signals.module.js",
+                "./dist/signals-core.module.js",
+                "./index.browser.js",
+                "./dist/preact.module.js",
+                "./dist/index.module.js",
+                "./browser.js",
+                "./lib/esm/main.js"
+            ],
+            "is_nullish": false,
+            "import": {
+                "strings": [
+                    "./standalone.mjs",
+                    "./dist/esm-browser/index.js"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./standalone.js"
+                ],
+                "is_nullish": false
+            },
+            "require": {
+                "strings": [
+                    "./dist/commonjs-browser/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [
+                "./dist/remapping.umd.js",
+                "./dist/index.js",
+                "./dist/cjs/index.js",
+                "./build/index.cjs",
+                "./dist/gen-mapping.umd.js",
+                "./dist/resolve-uri.umd.js",
+                "./dist/set-array.umd.js",
+                "./dist/sourcemap-codec.umd.js",
+                "./dist/trace-mapping.umd.js",
+                "./index.js",
+                "./dist/signals.js",
+                "./dist/signals-core.js",
+                "./dist/src/index.js",
+                "./src/index.js",
+                "./index.cjs",
+                "./dist/acorn.js",
+                "./dist/walk.js",
+                "./cjs-default-unwrap/index.js",
+                "./dist/lexer.cjs",
+                "./dist/eslint-visitor-keys.cjs",
+                "./dist/espree.cjs",
+                "./fraction.cjs",
+                "./lib/postcss.js",
+                "./dist/preact.js",
+                "./lib/cjs/puppeteer/puppeteer.js",
+                "./lib/cjs/puppeteer/puppeteer-core.js",
+                "./dist/rollup.js",
+                "./dist/lib.js",
+                "./lib/index.js"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./cjs/repeater.d.ts",
+                    "./build/cjs/index.d.ts",
+                    "./types/index.d.cts",
+                    "./typings/index.d.ts",
+                    "./index.d.ts",
+                    "./dist/cjs/types/index.d.ts",
+                    "./dist/commonjs/index.d.ts",
+                    "./dist/cjs/index.d.ts",
+                    "./lib/jiti.d.cts",
+                    "./umd/index.d.ts",
+                    "./index.d.cts",
+                    "./dist/cjs/src/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./cjs/repeater.js",
+                    "./build/cjs/index.js",
+                    "./dist/color.cjs",
+                    "./index.js",
+                    "./dist/index.js",
+                    "./dist/cjs/index.cjs",
+                    "./dist/commonjs/index.js",
+                    "./dist/cjs/index-cjs.js",
+                    "./lib/jiti.cjs",
+                    "./umd/index.js",
+                    "./index.cjs",
+                    "./dist/cjs/src/index-cjs.js",
+                    "./dist/cjs/index.js"
+                ],
+                "is_nullish": false
+            },
+            "source": {
+                "strings": [
+                    "./src/index.ts"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [
+                "./dist/remapping.mjs",
+                "./dist/esm/index.js",
+                "./dist/index.js",
+                "./dist/index.mjs",
+                "./dist/esm/index.mjs",
+                "./index.mjs",
+                "./dist/gen-mapping.mjs",
+                "./dist/resolve-uri.mjs",
+                "./dist/set-array.mjs",
+                "./dist/sourcemap-codec.mjs",
+                "./dist/trace-mapping.mjs",
+                "./dist/signals.mjs",
+                "./dist/signals-core.mjs",
+                "./src/index.mjs",
+                "./src/index.js",
+                "./index.js",
+                "./dist/acorn.mjs",
+                "./dist/walk.mjs",
+                "./esm/index.js",
+                "./mjs/index.js",
+                "./dist/lib/index.js",
+                "./dist/lexer.js",
+                "./lib/index.js",
+                "./espree.js",
+                "./fraction.js",
+                "./build/index.js",
+                "./dist/js-yaml.mjs",
+                "./lib/postcss.mjs",
+                "./dist/preact.mjs",
+                "./lib/esm/puppeteer/puppeteer.js",
+                "./lib/esm/puppeteer/puppeteer-core.js",
+                "./dist/es/rollup.js",
+                "./dist/lib.mjs",
+                "./dist/esm/tiny-invariant.js",
+                "./dist/node/index.js",
+                "./lib/esm/main.js",
+                "./wrapper.mjs",
+                "./build/lib/index.js",
+                "./lib/index.mjs"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/esm/index.d.mts",
+                    "./types/index.d.ts",
+                    "./typings/esm.d.mts",
+                    "./index.d.mts",
+                    "./dist/esm/types/index.d.ts",
+                    "./dist/esm/index.d.ts",
+                    "./dist/mjs/index.d.ts",
+                    "./lib/jiti.d.mts",
+                    "./index.d.ts",
+                    "./dist/node/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/esm/index.mjs",
+                    "./dist/color.js",
+                    "./esm.mjs",
+                    "./dist/index.mjs",
+                    "./dist/esm/index.mjs",
+                    "./dist/esm/index.js",
+                    "./dist/mjs/index.js",
+                    "./lib/jiti.mjs",
+                    "./index.js",
+                    "./index.mjs",
+                    "./dist/node/index.js"
+                ],
+                "is_nullish": false,
+                "types": {
+                    "strings": [
+                        "./modules/index.d.ts"
+                    ],
+                    "is_nullish": false
+                },
+                "default": {
+                    "strings": [
+                        "./tslib.es6.mjs"
+                    ],
+                    "is_nullish": false
+                }
+            },
+            "source": {
+                "strings": [
+                    "./src/index.ts"
+                ],
+                "is_nullish": false
+            },
+            "node": {
+                "strings": [
+                    "./modules/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "default": {
+            "strings": [
+                "./lib/index.js",
+                "./dist/generator.js",
+                "./dist/map.js",
+                "./src/index.js",
+                "./repeater.js",
+                "./dist/acorn.js",
+                "./dist/walk.js",
+                "./index.js",
+                "./dist/espree.cjs",
+                "./cjs/index.js",
+                "./build/index.cjs",
+                "./index.mjs",
+                "./tslib.js",
+                "./dist/esm-browser/index.js",
+                "./lib/umd/main.js",
+                "./browser/index.js"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/umd/types/index.d.ts",
+                    "./dist/tiny-invariant.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/umd/index.js",
+                    "./dist/tiny-invariant.cjs.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "source": {
+            "strings": [
+                "./lib/map.js"
+            ],
+            "is_nullish": false,
+            "deno": {
+                "strings": [
+                    "./lib/generator-deno.js"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./lib/generator.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "deno": {
+            "strings": [
+                "./dist/generator-deno.js"
+            ],
+            "is_nullish": false
+        },
+        "module": {
+            "strings": [
+                "./index.mjs",
+                "./dist/lexer.js",
+                "./build/index.js",
+                "./lib/esm/main.js"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./modules/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./tslib.es6.mjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "node": {
+            "strings": [
+                "./dist/index.js"
+            ],
+            "is_nullish": false,
+            "require": {
+                "strings": [
+                    "./dist/node.cjs",
+                    "./dist/index.js"
+                ],
+                "is_nullish": false
+            },
+            "import": {
+                "strings": [
+                    "./node-index.js",
+                    "./wrapper.mjs"
+                ],
+                "is_nullish": false
+            },
+            "module": {
+                "strings": [
+                    "./dist/esm-node/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "bun": {
+            "strings": [],
+            "is_nullish": false,
+            "require": {
+                "strings": [
+                    "./dist/node.cjs"
+                ],
+                "is_nullish": false
+            },
+            "import": {
+                "strings": [
+                    "./node-index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "umd": {
+            "strings": [
+                "./dist/preact.umd.js",
+                "./dist/index.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "types@<=5.0": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./src/index-5.d.ts"
+                ],
+                "is_nullish": false
+            }
+        },
+        "style": {
+            "strings": [
+                "./index.css"
+            ],
+            "is_nullish": false
+        },
+        "module-sync": {
+            "strings": [
+                "./dist/node/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./package.json": {
+        "strings": [
+            "./package.json"
+        ],
+        "is_nullish": false
+    },
+    "./plugins": {
+        "strings": [
+            "./plugins.js"
+        ],
+        "is_nullish": false
+    },
+    "./native-modules": {
+        "strings": [
+            "./native-modules.js"
+        ],
+        "is_nullish": false
+    },
+    "./corejs2-built-ins": {
+        "strings": [
+            "./corejs2-built-ins.js"
+        ],
+        "is_nullish": false
+    },
+    "./corejs3-shipped-proposals": {
+        "strings": [
+            "./corejs3-shipped-proposals.js"
+        ],
+        "is_nullish": false
+    },
+    "./overlapping-plugins": {
+        "strings": [
+            "./overlapping-plugins.js"
+        ],
+        "is_nullish": false
+    },
+    "./plugin-bugfixes": {
+        "strings": [
+            "./plugin-bugfixes.js"
+        ],
+        "is_nullish": false
+    },
+    "import": {
+        "strings": [
+            "./lib/esm/main.js",
+            "./dist/es/index.js",
+            "./dist/esm/estree-walker.js",
+            "./node/index.mjs",
+            "./dist/mitt.mjs",
+            "./dist/index.mjs",
+            "./lib/esm/index.mjs"
+        ],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/main.d.mts"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./dist/main.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "require": {
+        "strings": [
+            "./lib/cjs/main.js",
+            "./dist/cjs/index.js",
+            "./dist/umd/estree-walker.js",
+            "./node/index.js",
+            "./dist/mitt.js",
+            "./dist/index.js",
+            "./lib/umd/index.js"
+        ],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/main.d.cts"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./dist/main.cjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./cspell-default.config.js": {
+        "strings": [
+            "./cspell-default.config.js"
+        ],
+        "is_nullish": false
+    },
+    "./cspell-default.json": {
+        "strings": [
+            "./cspell-default.json"
+        ],
+        "is_nullish": false
+    },
+    "./index": {
+        "strings": [
+            "./index.css"
+        ],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./index.js": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./operators": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/operators/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./operators/index.js": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/operators/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./async": {
+        "strings": [
+            "./async.js"
+        ],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/async/index.js"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./async/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "browser": {
+            "strings": [
+                "./async/index.browser.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./index.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./async/index.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "default": {
+            "strings": [
+                "./async/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./async/index": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/async/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./async/index.js": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/async/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./sync": {
+        "strings": [
+            "./sync/index.js",
+            "./sync.js"
+        ],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/sync/index.js",
+                "./sync/index.mjs"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./sync/index.d.mts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./sync/index.mjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "types": {
+            "strings": [
+                "./sync/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./sync/index.js"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./sync/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./sync/index.js"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./sync/index": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/sync/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./sync/index.js": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/sync/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./Parser": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/Parser/index.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/Parser/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./cspell.schema.json": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./cspell.schema.json"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cspell.schema.json"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./ajv.config.js": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./ajv.config.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./cspell": {
+        "strings": [
+            "./cspell-ext.json"
+        ],
+        "is_nullish": false
+    },
+    "./cspell-ext.json": {
+        "strings": [
+            "./cspell-ext.json"
+        ],
+        "is_nullish": false
+    },
+    "./*.js": {
+        "strings": [
+            "./lib/*.js"
+        ],
+        "is_nullish": false,
+        "source": {
+            "strings": [
+                "./lib/*.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./server": {
+        "strings": [],
+        "is_nullish": false,
+        "module": {
+            "strings": [
+                "./server.mjs"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./server.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./server.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./server.browser": {
+        "strings": [],
+        "is_nullish": false,
+        "module": {
+            "strings": [
+                "./server.mjs"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./server.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./server.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./client": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./client.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./client.js"
+            ],
+            "is_nullish": false
+        },
+        "types": {
+            "strings": [
+                "./client.d.ts"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./jsx-dev-runtime": {
+        "strings": [],
+        "is_nullish": false,
+        "module": {
+            "strings": [
+                "./jsx-dev-runtime.mjs"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./jsx-dev-runtime.mjs",
+                "./jsx-runtime/dist/jsxRuntime.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./jsx-dev-runtime.js",
+                "./jsx-runtime/dist/jsxRuntime.js"
+            ],
+            "is_nullish": false
+        },
+        "types": {
+            "strings": [
+                "./jsx-runtime/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./jsx-runtime/dist/jsxRuntime.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./jsx-runtime/dist/jsxRuntime.umd.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./jsx-runtime": {
+        "strings": [],
+        "is_nullish": false,
+        "module": {
+            "strings": [
+                "./jsx-runtime.mjs"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./jsx-runtime.mjs",
+                "./jsx-runtime/dist/jsxRuntime.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./jsx-runtime.js",
+                "./jsx-runtime/dist/jsxRuntime.js"
+            ],
+            "is_nullish": false
+        },
+        "types": {
+            "strings": [
+                "./jsx-runtime/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./jsx-runtime/dist/jsxRuntime.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./jsx-runtime/dist/jsxRuntime.umd.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compiler": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/cjs/compiler/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/cjs/compiler/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/esm/compiler/index.d.mts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/esm/compiler/index.mjs"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./errors": {
+        "strings": [
+            "./lib/errors.js"
+        ],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/cjs/errors/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/cjs/errors/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/esm/errors/index.d.mts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/esm/errors/index.mjs"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./system": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/cjs/system/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/cjs/system/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/esm/system/index.d.mts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/esm/system/index.mjs"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./type": {
+        "strings": [
+            "./type.js"
+        ],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/cjs/type/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/cjs/type/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/esm/type/index.d.mts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/esm/type/index.mjs"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./value": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/cjs/value/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/cjs/value/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./build/esm/value/index.d.mts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./build/esm/value/index.mjs"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./require-cache": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/require-cache.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./dist/require-cache.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./esm-cache-loader": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/esm-cache.loader.d.mts"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./dist/esm-cache.loader.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./*": {
+        "strings": [
+            "./lib/*.js",
+            "./*"
+        ],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./*.js",
+                "./*"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./*.cjs",
+                "./*"
+            ],
+            "is_nullish": false
+        },
+        "types": {
+            "strings": [
+                "./*.d.ts"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./lib/*": {
+        "strings": [
+            "./lib/*.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/*.js": {
+        "strings": [
+            "./lib/*.js"
+        ],
+        "is_nullish": false
+    },
+    "./package": {
+        "strings": [
+            "./package.json"
+        ],
+        "is_nullish": false
+    },
+    "./constants": {
+        "strings": [
+            "./lib/constants.js"
+        ],
+        "is_nullish": false
+    },
+    "./posix": {
+        "strings": [
+            "./lib/posix.js"
+        ],
+        "is_nullish": false
+    },
+    "./win32": {
+        "strings": [
+            "./lib/win32.js"
+        ],
+        "is_nullish": false
+    },
+    "./promises": {
+        "strings": [
+            "./promises.js"
+        ],
+        "is_nullish": false
+    },
+    "./web": {
+        "strings": [
+            "./web.js"
+        ],
+        "is_nullish": false
+    },
+    "./global": {
+        "strings": [
+            "./global.js"
+        ],
+        "is_nullish": false
+    },
+    "./callBound": {
+        "strings": [
+            "./callBound.js"
+        ],
+        "is_nullish": false
+    },
+    "types": {
+        "strings": [
+            "./index.d.ts",
+            "./node/index.d.ts",
+            "./types/index.d.ts",
+            "./lib/umd/index.d.ts"
+        ],
+        "is_nullish": false
+    },
+    "default": {
+        "strings": [
+            "./index.js",
+            "./dist/index.js",
+            "./dist/mitt.mjs"
+        ],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./sass.default.cjs"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./sass.default.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./handler.js": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./esm/handler.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./handler.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./fn": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./types/src/index-fn.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./src/index-fn.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./types/src/index-fn.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/color-fn.cjs"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./dist/*": {
+        "strings": [
+            "./dist/*"
+        ],
+        "is_nullish": false
+    },
+    "./esm.mjs": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./typings/esm.d.mts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./esm.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc16ccitt": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc16ccitt.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc16ccitt.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc16ccitt.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc16ccitt": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc16ccitt.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc16ccitt.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc16ccitt.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc16kermit": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc16kermit.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc16kermit.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc16kermit.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc16kermit": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc16kermit.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc16kermit.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc16kermit.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc16modbus": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc16modbus.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc16modbus.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc16modbus.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc16modbus": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc16modbus.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc16modbus.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc16modbus.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc16": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc16.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc16.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc16.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc16": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc16.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc16.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc16.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc16xmodem": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc16xmodem.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc16xmodem.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc16xmodem.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc16xmodem": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc16xmodem.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc16xmodem.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc16xmodem.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc1": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc1.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc1.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc1.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc1": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc1.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc1.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc1.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc24": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc24.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc24.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc24.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc24": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc24.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc24.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc24.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc32": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc32.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc32.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc32.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc32": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc32.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc32.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc32.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc32mpeg2": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc32mpeg2.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc32mpeg2.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc32mpeg2.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc32mpeg2": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc32mpeg2.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc32mpeg2.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc32mpeg2.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc81wire": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc81wire.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc81wire.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc81wire.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc81wire": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc81wire.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc81wire.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc81wire.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc8": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc8.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc8.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc8.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc8": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc8.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc8.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc8.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crc8dvbs2": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crc8dvbs2.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crc8dvbs2.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crc8dvbs2.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crc8dvbs2": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crc8dvbs2.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crc8dvbs2.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crc8dvbs2.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./crcjam": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/crcjam.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/crcjam.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/crcjam.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./calculators/crcjam": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./mjs/calculators/crcjam.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./mjs/calculators/crcjam.js"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./cjs-default-unwrap/calculators/crcjam.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./app": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/esm/app.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./bin": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./bin.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./bin.mjs": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./bin.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./application": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/esm/application.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./parsers/typescript": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./dist/parsers/typescript/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "node": {
+        "strings": [
+            "./dist/node.js"
+        ],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./sass.node.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./sass.node.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./eval": {
+        "strings": [
+            "./eval.js"
+        ],
+        "is_nullish": false
+    },
+    "./range": {
+        "strings": [
+            "./range.js"
+        ],
+        "is_nullish": false
+    },
+    "./ref": {
+        "strings": [
+            "./ref.js"
+        ],
+        "is_nullish": false
+    },
+    "./syntax": {
+        "strings": [
+            "./syntax.js"
+        ],
+        "is_nullish": false
+    },
+    "./uri": {
+        "strings": [
+            "./uri.js"
+        ],
+        "is_nullish": false
+    },
+    "./js": {
+        "strings": [
+            "./dist/lexer.asm.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm": {
+        "strings": [
+            "./esm.js"
+        ],
+        "is_nullish": false
+    },
+    "./watchdog": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "source": {
+                "strings": [
+                    "./src/watchdog.ts"
+                ],
+                "is_nullish": false
+            },
+            "types": {
+                "strings": [
+                    "./dist/esm/watchdog.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/esm/watchdog.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "source": {
+                "strings": [
+                    "./src/watchdog.ts"
+                ],
+                "is_nullish": false
+            },
+            "types": {
+                "strings": [
+                    "./dist/commonjs/watchdog.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/commonjs/watchdog.js"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./proxy-signals": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "source": {
+                "strings": [
+                    "./src/proxy-signals.ts"
+                ],
+                "is_nullish": false
+            },
+            "types": {
+                "strings": [
+                    "./dist/esm/proxy-signals.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/esm/proxy-signals.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "source": {
+                "strings": [
+                    "./src/proxy-signals.ts"
+                ],
+                "is_nullish": false
+            },
+            "types": {
+                "strings": [
+                    "./dist/commonjs/proxy-signals.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/commonjs/proxy-signals.js"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./shams": {
+        "strings": [
+            "./shams.js"
+        ],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./shams.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./shams.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./build/*": {
+        "strings": [
+            "./build/*"
+        ],
+        "is_nullish": false
+    },
+    "./register": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./lib/jiti-register.d.mts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./lib/jiti-register.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./native": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./lib/jiti.d.mts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./lib/jiti-native.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./min": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/esm/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/esm/index.min.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/commonjs/index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/commonjs/index.min.js"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "module": {
+        "strings": [
+            "./dist/mitt.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./pack": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [],
+            "is_nullish": false,
+            "require": {
+                "strings": [
+                    "./pack.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "import": {
+                "strings": [
+                    "./pack.d.ts"
+                ],
+                "is_nullish": false
+            }
+        },
+        "node": {
+            "strings": [],
+            "is_nullish": false,
+            "import": {
+                "strings": [
+                    "./index.js"
+                ],
+                "is_nullish": false
+            },
+            "require": {
+                "strings": [
+                    "./dist/node.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "bun": {
+            "strings": [],
+            "is_nullish": false,
+            "import": {
+                "strings": [
+                    "./index.js"
+                ],
+                "is_nullish": false
+            },
+            "require": {
+                "strings": [
+                    "./dist/node.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "default": {
+            "strings": [
+                "./pack.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./unpack": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [],
+            "is_nullish": false,
+            "require": {
+                "strings": [
+                    "./unpack.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "import": {
+                "strings": [
+                    "./unpack.d.ts"
+                ],
+                "is_nullish": false
+            }
+        },
+        "node": {
+            "strings": [],
+            "is_nullish": false,
+            "import": {
+                "strings": [
+                    "./index.js"
+                ],
+                "is_nullish": false
+            },
+            "require": {
+                "strings": [
+                    "./dist/node.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "bun": {
+            "strings": [],
+            "is_nullish": false,
+            "import": {
+                "strings": [
+                    "./index.js"
+                ],
+                "is_nullish": false
+            },
+            "require": {
+                "strings": [
+                    "./dist/node.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "default": {
+            "strings": [
+                "./unpack.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./unpack-no-eval": {
+        "strings": [
+            "./dist/unpack-no-eval.cjs"
+        ],
+        "is_nullish": false
+    },
+    "./index-no-eval": {
+        "strings": [
+            "./dist/index-no-eval.cjs"
+        ],
+        "is_nullish": false
+    },
+    "./async/package.json": {
+        "strings": [
+            "./async/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./non-secure/package.json": {
+        "strings": [
+            "./non-secure/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./non-secure": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./index.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./non-secure/index.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./non-secure/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "default": {
+            "strings": [
+                "./non-secure/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./url-alphabet/package.json": {
+        "strings": [
+            "./url-alphabet/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./url-alphabet": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./index.d.cts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./url-alphabet/index.cjs"
+                ],
+                "is_nullish": false
+            }
+        },
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./index.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./url-alphabet/index.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "default": {
+            "strings": [
+                "./url-alphabet/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./lib/at-rule": {
+        "strings": [
+            "./lib/at-rule.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/comment": {
+        "strings": [
+            "./lib/comment.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/container": {
+        "strings": [
+            "./lib/container.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/css-syntax-error": {
+        "strings": [
+            "./lib/css-syntax-error.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/declaration": {
+        "strings": [
+            "./lib/declaration.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/fromJSON": {
+        "strings": [
+            "./lib/fromJSON.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/input": {
+        "strings": [
+            "./lib/input.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/lazy-result": {
+        "strings": [
+            "./lib/lazy-result.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/no-work-result": {
+        "strings": [
+            "./lib/no-work-result.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/list": {
+        "strings": [
+            "./lib/list.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/map-generator": {
+        "strings": [
+            "./lib/map-generator.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/node": {
+        "strings": [
+            "./lib/node.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/parse": {
+        "strings": [
+            "./lib/parse.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/parser": {
+        "strings": [
+            "./lib/parser.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/postcss": {
+        "strings": [
+            "./lib/postcss.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/previous-map": {
+        "strings": [
+            "./lib/previous-map.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/processor": {
+        "strings": [
+            "./lib/processor.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/result": {
+        "strings": [
+            "./lib/result.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/root": {
+        "strings": [
+            "./lib/root.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/rule": {
+        "strings": [
+            "./lib/rule.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/stringifier": {
+        "strings": [
+            "./lib/stringifier.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/stringify": {
+        "strings": [
+            "./lib/stringify.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/symbols": {
+        "strings": [
+            "./lib/symbols.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/terminal-highlight": {
+        "strings": [
+            "./lib/terminal-highlight.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/tokenize": {
+        "strings": [
+            "./lib/tokenize.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/warn-once": {
+        "strings": [
+            "./lib/warn-once.js"
+        ],
+        "is_nullish": false
+    },
+    "./lib/warning": {
+        "strings": [
+            "./lib/warning.js"
+        ],
+        "is_nullish": false
+    },
+    "./objectifier": {
+        "strings": [
+            "./objectifier.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser": {
+        "strings": [
+            "./parser.js"
+        ],
+        "is_nullish": false
+    },
+    "./process-result": {
+        "strings": [
+            "./process-result.js"
+        ],
+        "is_nullish": false
+    },
+    "./compat": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./compat/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./compat/dist/compat.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./compat/dist/compat.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./compat/dist/compat.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./compat/dist/compat.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./debug": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./debug/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./debug/dist/debug.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./debug/dist/debug.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./debug/dist/debug.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./debug/dist/debug.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./devtools": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./devtools/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./devtools/dist/devtools.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./devtools/dist/devtools.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./devtools/dist/devtools.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./devtools/dist/devtools.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./hooks": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./hooks/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./hooks/dist/hooks.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./hooks/dist/hooks.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./hooks/dist/hooks.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./hooks/dist/hooks.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./test-utils": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./test-utils/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./test-utils/dist/testUtils.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./test-utils/dist/testUtils.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./test-utils/dist/testUtils.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./test-utils/dist/testUtils.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compat/client": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./compat/client.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./compat/client.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./compat/client.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compat/server": {
+        "strings": [],
+        "is_nullish": false,
+        "browser": {
+            "strings": [
+                "./compat/server.browser.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./compat/server.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./compat/server.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compat/jsx-runtime": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./jsx-runtime/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./compat/jsx-runtime.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./compat/jsx-runtime.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compat/jsx-dev-runtime": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./jsx-runtime/src/index.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./compat/jsx-dev-runtime.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./compat/jsx-dev-runtime.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compat/scheduler": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./compat/scheduler.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./compat/scheduler.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./compat/package.json": {
+        "strings": [
+            "./compat/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./debug/package.json": {
+        "strings": [
+            "./debug/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./devtools/package.json": {
+        "strings": [
+            "./devtools/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./hooks/package.json": {
+        "strings": [
+            "./hooks/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./test-utils/package.json": {
+        "strings": [
+            "./test-utils/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./jsx-runtime/package.json": {
+        "strings": [
+            "./jsx-runtime/package.json"
+        ],
+        "is_nullish": false
+    },
+    "./jsx": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/jsx.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./dist/jsx/index.module.js"
+            ],
+            "is_nullish": false
+        },
+        "umd": {
+            "strings": [
+                "./dist/jsx/index.umd.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/jsx/index.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/jsx/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./stream": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/stream.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "browser": {
+            "strings": [
+                "./dist/stream/index.module.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/stream/index.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/stream/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./stream-node": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/stream-node.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/stream/node/index.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/stream/node/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./doc": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./doc.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./doc.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./doc.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./standalone": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./standalone.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./standalone.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./standalone.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/estree": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/estree.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/estree.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/estree.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/babel": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/babel.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/babel.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/babel.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/flow": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/flow.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/flow.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/flow.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/typescript": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/typescript.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/typescript.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/typescript.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/acorn": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/acorn.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/acorn.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/acorn.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/meriyah": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/meriyah.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/meriyah.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/meriyah.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/angular": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/angular.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/angular.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/angular.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/postcss": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/postcss.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/postcss.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/postcss.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/graphql": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/graphql.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/graphql.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/graphql.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/markdown": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/markdown.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/markdown.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/markdown.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/glimmer": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/glimmer.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/glimmer.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/glimmer.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/html": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/html.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/html.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/html.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugins/yaml": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./plugins/yaml.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./plugins/yaml.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./plugins/yaml.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./esm/standalone.mjs": {
+        "strings": [
+            "./standalone.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-babel": {
+        "strings": [
+            "./plugins/babel.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-babel.js": {
+        "strings": [
+            "./plugins/babel.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-babel.mjs": {
+        "strings": [
+            "./plugins/babel.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-flow": {
+        "strings": [
+            "./plugins/flow.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-flow.js": {
+        "strings": [
+            "./plugins/flow.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-flow.mjs": {
+        "strings": [
+            "./plugins/flow.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-typescript": {
+        "strings": [
+            "./plugins/typescript.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-typescript.js": {
+        "strings": [
+            "./plugins/typescript.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-typescript.mjs": {
+        "strings": [
+            "./plugins/typescript.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-espree": {
+        "strings": [
+            "./plugins/acorn.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-espree.js": {
+        "strings": [
+            "./plugins/acorn.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-espree.mjs": {
+        "strings": [
+            "./plugins/acorn.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-meriyah": {
+        "strings": [
+            "./plugins/meriyah.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-meriyah.js": {
+        "strings": [
+            "./plugins/meriyah.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-meriyah.mjs": {
+        "strings": [
+            "./plugins/meriyah.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-angular": {
+        "strings": [
+            "./plugins/angular.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-angular.js": {
+        "strings": [
+            "./plugins/angular.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-angular.mjs": {
+        "strings": [
+            "./plugins/angular.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-postcss": {
+        "strings": [
+            "./plugins/postcss.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-postcss.js": {
+        "strings": [
+            "./plugins/postcss.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-postcss.mjs": {
+        "strings": [
+            "./plugins/postcss.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-graphql": {
+        "strings": [
+            "./plugins/graphql.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-graphql.js": {
+        "strings": [
+            "./plugins/graphql.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-graphql.mjs": {
+        "strings": [
+            "./plugins/graphql.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-markdown": {
+        "strings": [
+            "./plugins/markdown.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-markdown.js": {
+        "strings": [
+            "./plugins/markdown.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-markdown.mjs": {
+        "strings": [
+            "./plugins/markdown.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-glimmer": {
+        "strings": [
+            "./plugins/glimmer.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-glimmer.js": {
+        "strings": [
+            "./plugins/glimmer.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-glimmer.mjs": {
+        "strings": [
+            "./plugins/glimmer.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-html": {
+        "strings": [
+            "./plugins/html.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-html.js": {
+        "strings": [
+            "./plugins/html.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-html.mjs": {
+        "strings": [
+            "./plugins/html.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./parser-yaml": {
+        "strings": [
+            "./plugins/yaml.js"
+        ],
+        "is_nullish": false
+    },
+    "./parser-yaml.js": {
+        "strings": [
+            "./plugins/yaml.js"
+        ],
+        "is_nullish": false
+    },
+    "./esm/parser-yaml.mjs": {
+        "strings": [
+            "./plugins/yaml.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./internal/*": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./lib/esm/puppeteer/*"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./lib/cjs/puppeteer/*"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./loadConfigFile": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/loadConfigFile.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/loadConfigFile.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./dist/loadConfigFile.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./getLogFilter": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/getLogFilter.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/getLogFilter.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/es/getLogFilter.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./parseAst": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/parseAst.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./dist/parseAst.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/es/parseAst.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./env": {
+        "strings": [
+            "./env.js"
+        ],
+        "is_nullish": false
+    },
+    "./signals": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/mjs/signals.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/mjs/signals.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/cjs/signals.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/cjs/signals.js"
+                ],
+                "is_nullish": false
+            }
+        }
+    },
+    "./browser": {
+        "strings": [
+            "./browser.js"
+        ],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./browser.mjs"
+            ],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/mjs/browser.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/mjs/browser.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "require": {
+            "strings": [],
+            "is_nullish": false,
+            "types": {
+                "strings": [
+                    "./dist/cjs/browser.d.ts"
+                ],
+                "is_nullish": false
+            },
+            "default": {
+                "strings": [
+                    "./dist/cjs/browser.js"
+                ],
+                "is_nullish": false
+            }
+        },
+        "types": {
+            "strings": [
+                "./browser.d.ts"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugin": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/plugin.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/plugin.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./plugin.js": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/plugin.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/plugin.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./defaultTheme": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/default-theme.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/default-theme.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./defaultTheme.js": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/default-theme.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/default-theme.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./colors": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/colors.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/colors.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./colors.js": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/colors.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/colors.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./lib/util/flattenColorPalette": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/flatten-color-palette.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/flatten-color-palette.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./lib/util/flattenColorPalette.js": {
+        "strings": [],
+        "is_nullish": false,
+        "require": {
+            "strings": [
+                "./dist/flatten-color-palette.js"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/flatten-color-palette.mjs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./index.css": {
+        "strings": [
+            "./index.css"
+        ],
+        "is_nullish": false
+    },
+    "./preflight.css": {
+        "strings": [
+            "./preflight.css"
+        ],
+        "is_nullish": false
+    },
+    "./preflight": {
+        "strings": [
+            "./preflight.css"
+        ],
+        "is_nullish": false
+    },
+    "./theme.css": {
+        "strings": [
+            "./theme.css"
+        ],
+        "is_nullish": false
+    },
+    "./theme": {
+        "strings": [
+            "./theme.css"
+        ],
+        "is_nullish": false
+    },
+    "./utilities.css": {
+        "strings": [
+            "./utilities.css"
+        ],
+        "is_nullish": false
+    },
+    "./utilities": {
+        "strings": [
+            "./utilities.css"
+        ],
+        "is_nullish": false
+    },
+    "./": {
+        "strings": [
+            "./"
+        ],
+        "is_nullish": false
+    },
+    "./dist/client/*": {
+        "strings": [
+            "./dist/client/*"
+        ],
+        "is_nullish": false
+    },
+    "./runtime": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/node/runtime.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "import": {
+            "strings": [
+                "./dist/node/runtime.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./types/*": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./types/*"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./module-runner": {
+        "strings": [
+            "./dist/node/module-runner.js"
+        ],
+        "is_nullish": false
+    },
+    "./types/internal/*": {
+        "strings": [],
+        "is_nullish": true
+    },
+    "browser": {
+        "strings": [
+            "./lib/esm/index.mjs"
+        ],
+        "is_nullish": false
+    },
+    "./util": {
+        "strings": [],
+        "is_nullish": false,
+        "types": {
+            "strings": [
+                "./dist/util.d.ts"
+            ],
+            "is_nullish": false
+        },
+        "node": {
+            "strings": [
+                "./dist/util.js"
+            ],
+            "is_nullish": false
+        },
+        "default": {
+            "strings": [
+                "./browser/dist/util.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./helpers": {
+        "strings": [],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./helpers/helpers.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./helpers/index.js"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./yargs": {
+        "strings": [
+            "./yargs"
+        ],
+        "is_nullish": false,
+        "import": {
+            "strings": [
+                "./yargs.mjs"
+            ],
+            "is_nullish": false
+        },
+        "require": {
+            "strings": [
+                "./yargs"
+            ],
+            "is_nullish": false
+        }
+    },
+    "./locales/*": {
+        "strings": [
+            "./lib/locales/*"
+        ],
+        "is_nullish": false
+    }
+}
