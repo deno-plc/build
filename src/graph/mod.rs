@@ -5,7 +5,7 @@ use std::{
     sync::Arc,
 };
 
-use deno_graph::ModuleSpecifier;
+use crate::specifier::ModuleSpecifier;
 use dependencies::DependencyLink;
 use url::Url;
 

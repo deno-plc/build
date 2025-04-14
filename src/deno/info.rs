@@ -3,7 +3,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use deno_graph::ModuleSpecifier;
+use crate::specifier::ModuleSpecifier;
 use serde::Deserialize;
 use url::Url;
 
@@ -53,10 +53,10 @@ impl Module {
             // Module::Json(module) => module.media_type,
             // Module::Wasm(_) => MediaType::Wasm,
             Module::Node(_) => MediaType {
-                media_type: deno_graph::MediaType::JavaScript,
+                media_type: crate::specifier::MediaType::JavaScript,
             },
             Module::Npm(_) | Module::External(_) => MediaType {
-                media_type: deno_graph::MediaType::Unknown,
+                media_type: crate::specifier::MediaType::Unknown,
             },
         }
     }

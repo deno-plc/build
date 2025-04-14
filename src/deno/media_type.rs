@@ -1,6 +1,6 @@
 use std::ops::Deref;
 
-use deno_graph::MediaType as DenoMediaType;
+use crate::specifier::MediaType as DenoMediaType;
 use serde::{Deserialize, Serialize};
 
 #[repr(transparent)]

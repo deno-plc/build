@@ -1,50 +1,59 @@
-pub mod api;
-pub mod deno;
-pub mod graph;
+// pub mod api;
+// pub mod deno;
+// pub mod graph;
+// pub mod specifier;
 pub mod transpiler;
-use std::{collections::HashMap, env, sync::Arc};
+// use std::{collections::HashMap, env, sync::Arc};
 
-use deno::info::call_deno_info;
+use tokio::fs::read_to_string;
+// use deno::info::call_deno_info;
+use transpiler::transform::transform;
 // use api::router;
-use deno_graph::ModuleSpecifier;
-use graph::ModuleGraph;
+// use crate::specifier::ModuleSpecifier;
+// use graph::ModuleGraph;
 // use tokio::{signal, spawn};
 
 #[tokio::main]
 async fn main() {
-    let test_dir = env::current_dir()
-        .unwrap()
-        .join("../technik-app")
-        .canonicalize()
-        .unwrap();
+    let code = read_to_string("../technik-app/frontend/dev.client.tsx")
+        .await
+        .expect("Failed to read file");
 
-    let mut graph = ModuleGraph::new();
+    let res = transform(&code);
 
-    let root = ModuleSpecifier::from_file_path(test_dir.join("frontend/dev.client.tsx")).unwrap();
+    // let test_dir = env::current_dir()
+    //     .unwrap()
+    //     .join("../technik-app")
+    //     .canonicalize()
+    //     .unwrap();
 
-    println!("Retrieving graph");
+    // let mut graph = ModuleGraph::new();
 
-    let info = call_deno_info("deno", &test_dir, &root).await.unwrap();
+    // let root = ModuleSpecifier::from_file_path(test_dir.join("frontend/dev.client.tsx")).unwrap();
 
-    println!("Processing graph");
+    // println!("Retrieving graph");
 
-    graph.build(info).await;
+    // let info = call_deno_info("deno", &test_dir, &root).await.unwrap();
 
-    let graph = Arc::new(graph);
+    // println!("Processing graph");
 
-    println!("Graph built");
+    // graph.build(info).await;
 
-    println!(
-        "Test: {:#?}",
-        graph
-            .root()
-            .unwrap()
-            .lookup_table()
-            .unwrap()
-            .iter()
-            .map(|(k, v)| (k.to_string(), v.specifier().to_string()))
-            .collect::<HashMap<_, _>>()
-    );
+    // let graph = Arc::new(graph);
+
+    // println!("Graph built");
+
+    // println!(
+    //     "Test: {:#?}",
+    //     graph
+    //         .root()
+    //         .unwrap()
+    //         .lookup_table()
+    //         .unwrap()
+    //         .iter()
+    //         .map(|(k, v)| (k.to_string(), v.specifier().to_string()))
+    //         .collect::<HashMap<_, _>>()
+    // );
 
     // let listener = tokio::net::TcpListener::bind("[::1]:3000").await.unwrap();
 

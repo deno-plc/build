@@ -1,6 +1,8 @@
 import { Hono } from "hono";
 import { config_defaults } from "./src/config.ts";
 import { join, normalize, relative } from "@std/path/posix";
+import { transform } from "./src/transpiler/transform.ts";
+import { toFileUrl } from "@std/path/to-file-url";
 
 const config = config_defaults({
     root: "../technik-app"
@@ -14,6 +16,10 @@ app.get("/", c => {
     return c.text("Hello World!");
 });
 
+app.get("/favicon.ico", () => {
+    return fetch("https://deno.com/favicon.ico");
+});
+
 app.get("/*", async (c) => {
     const url = new URL(c.req.url);
     const normalizedPath = normalize(url.pathname);
@@ -25,7 +31,9 @@ app.get("/*", async (c) => {
 
     const file = await Deno.readTextFile(join(config.root, normalizedPath));
 
-    return c.text(file, 200);
+    const transformed = await transform(file, toFileUrl(join(config.root, normalizedPath)));
+
+    return c.text(transformed, 200);
 });
 
 Deno.serve({

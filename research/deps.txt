@@ -1,0 +1,1010 @@
+deno-plc-build v0.1.0 (D:\dev\deno-plc-build)
+axum v0.8.3
+axum-core v0.5.2
+bytes v1.10.1
+futures-core v0.3.31
+http v1.3.1
+bytes v1.10.1
+fnv v1.0.7
+itoa v1.0.15
+http-body v1.0.1
+bytes v1.10.1
+http v1.3.1 (*)
+http-body-util v0.1.3
+bytes v1.10.1
+futures-core v0.3.31
+http v1.3.1 (*)
+http-body v1.0.1 (*)
+pin-project-lite v0.2.16
+mime v0.3.17
+pin-project-lite v0.2.16
+rustversion v1.0.20 (proc-macro)
+sync_wrapper v1.0.2
+tower-layer v0.3.3
+tower-service v0.3.3
+tracing v0.1.41
+log v0.4.27
+pin-project-lite v0.2.16
+tracing-attributes v0.1.28 (proc-macro)
+proc-macro2 v1.0.94
+unicode-ident v1.0.18
+quote v1.0.40
+proc-macro2 v1.0.94 (*)
+syn v2.0.100
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+unicode-ident v1.0.18
+tracing-core v0.1.33
+once_cell v1.21.3
+bytes v1.10.1
+form_urlencoded v1.2.1
+percent-encoding v2.3.1
+futures-util v0.3.31
+futures-core v0.3.31
+futures-task v0.3.31
+pin-project-lite v0.2.16
+pin-utils v0.1.0
+http v1.3.1 (*)
+http-body v1.0.1 (*)
+http-body-util v0.1.3 (*)
+hyper v1.6.0
+bytes v1.10.1
+futures-channel v0.3.31
+futures-core v0.3.31
+futures-util v0.3.31 (*)
+http v1.3.1 (*)
+http-body v1.0.1 (*)
+httparse v1.10.1
+httpdate v1.0.3
+itoa v1.0.15
+pin-project-lite v0.2.16
+smallvec v1.14.0
+tokio v1.44.1
+bytes v1.10.1
+mio v1.0.3
+windows-sys v0.52.0
+windows-targets v0.52.6
+windows_x86_64_msvc v0.52.6
+parking_lot v0.12.3
+lock_api v0.4.12
+scopeguard v1.2.0
+autocfg v1.4.0
+parking_lot_core v0.9.10
+cfg-if v1.0.0
+smallvec v1.14.0
+windows-targets v0.52.6 (*)
+pin-project-lite v0.2.16
+socket2 v0.5.9
+windows-sys v0.52.0 (*)
+tokio-macros v2.5.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+windows-sys v0.52.0 (*)
+hyper-util v0.1.11
+bytes v1.10.1
+futures-util v0.3.31 (*)
+http v1.3.1 (*)
+http-body v1.0.1 (*)
+hyper v1.6.0 (*)
+pin-project-lite v0.2.16
+tokio v1.44.1 (*)
+tower-service v0.3.3
+itoa v1.0.15
+matchit v0.8.4
+memchr v2.7.4
+mime v0.3.17
+percent-encoding v2.3.1
+pin-project-lite v0.2.16
+rustversion v1.0.20 (proc-macro)
+serde v1.0.219
+serde_derive v1.0.219 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+serde_json v1.0.140
+itoa v1.0.15
+memchr v2.7.4
+ryu v1.0.20
+serde v1.0.219 (*)
+serde_path_to_error v0.1.17
+itoa v1.0.15
+serde v1.0.219 (*)
+serde_urlencoded v0.7.1
+form_urlencoded v1.2.1 (*)
+itoa v1.0.15
+ryu v1.0.20
+serde v1.0.219 (*)
+sync_wrapper v1.0.2
+tokio v1.44.1 (*)
+tower v0.5.2
+futures-core v0.3.31
+futures-util v0.3.31 (*)
+pin-project-lite v0.2.16
+sync_wrapper v1.0.2
+tokio v1.44.1 (*)
+tower-layer v0.3.3
+tower-service v0.3.3
+tracing v0.1.41 (*)
+tower-layer v0.3.3
+tower-service v0.3.3
+tracing v0.1.41 (*)
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+swc_core v22.3.1
+swc v21.0.0
+anyhow v1.0.97
+base64 v0.22.1
+dashmap v5.5.3
+cfg-if v1.0.0
+hashbrown v0.14.5
+ahash v0.8.11
+cfg-if v1.0.0
+getrandom v0.2.15
+cfg-if v1.0.0
+once_cell v1.21.3
+serde v1.0.219 (*)
+zerocopy v0.7.35
+version_check v0.9.5
+allocator-api2 v0.2.21
+lock_api v0.4.12 (*)
+once_cell v1.21.3
+parking_lot_core v0.9.10 (*)
+either v1.15.0
+indexmap v2.9.0
+equivalent v1.0.2
+hashbrown v0.15.2
+serde v1.0.219 (*)
+jsonc-parser v0.26.2
+serde_json v1.0.140 (*)
+lru v0.10.1
+hashbrown v0.13.2
+ahash v0.8.11 (*)
+once_cell v1.21.3
+par-core v1.0.3
+once_cell v1.21.3
+par-iter v1.0.2
+either v1.15.0
+par-core v1.0.3 (*)
+parking_lot v0.12.3 (*)
+pathdiff v0.2.3
+regex v1.11.1
+aho-corasick v1.1.3
+memchr v2.7.4
+memchr v2.7.4
+regex-automata v0.4.9
+aho-corasick v1.1.3 (*)
+memchr v2.7.4
+regex-syntax v0.8.5
+regex-syntax v0.8.5
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+sourcemap v9.1.2
+base64-simd v0.7.0
+simd-abstraction v0.7.1
+outref v0.1.0
+bitvec v1.0.1
+funty v2.0.0
+radium v0.7.0
+tap v1.0.1
+wyz v0.5.1
+tap v1.0.1
+data-encoding v2.9.0
+debugid v0.8.0
+serde v1.0.219 (*)
+uuid v1.16.0
+if_chain v1.0.2
+rustc-hash v1.1.0
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+unicode-id-start v1.3.1
+url v2.5.4
+form_urlencoded v1.2.1 (*)
+idna v1.0.3
+idna_adapter v1.2.0
+icu_normalizer v1.5.0
+displaydoc v0.2.5 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+icu_collections v1.5.0
+displaydoc v0.2.5 (proc-macro) (*)
+yoke v0.7.5
+stable_deref_trait v1.2.0
+yoke-derive v0.7.5 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+synstructure v0.13.1
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+zerofrom v0.1.6
+zerofrom-derive v0.1.6 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+synstructure v0.13.1 (*)
+zerofrom v0.1.6 (*)
+zerovec v0.10.4
+yoke v0.7.5 (*)
+zerofrom v0.1.6 (*)
+zerovec-derive v0.10.3 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+icu_normalizer_data v1.5.1
+icu_properties v1.5.1
+displaydoc v0.2.5 (proc-macro) (*)
+icu_collections v1.5.0 (*)
+icu_locid_transform v1.5.0
+displaydoc v0.2.5 (proc-macro) (*)
+icu_locid v1.5.0
+displaydoc v0.2.5 (proc-macro) (*)
+litemap v0.7.5
+tinystr v0.7.6
+displaydoc v0.2.5 (proc-macro) (*)
+zerovec v0.10.4 (*)
+writeable v0.5.5
+zerovec v0.10.4 (*)
+icu_locid_transform_data v1.5.1
+icu_provider v1.5.0
+displaydoc v0.2.5 (proc-macro) (*)
+icu_locid v1.5.0 (*)
+icu_provider_macros v1.5.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+stable_deref_trait v1.2.0
+tinystr v0.7.6 (*)
+writeable v0.5.5
+yoke v0.7.5 (*)
+zerofrom v0.1.6 (*)
+zerovec v0.10.4 (*)
+tinystr v0.7.6 (*)
+zerovec v0.10.4 (*)
+icu_properties_data v1.5.1
+icu_provider v1.5.0 (*)
+tinystr v0.7.6 (*)
+zerovec v0.10.4 (*)
+icu_provider v1.5.0 (*)
+smallvec v1.14.0
+utf16_iter v1.0.5
+utf8_iter v1.0.4
+write16 v1.0.0
+zerovec v0.10.4 (*)
+icu_properties v1.5.1 (*)
+smallvec v1.14.0
+utf8_iter v1.0.4
+percent-encoding v2.3.1
+serde v1.0.219 (*)
+rustc_version v0.2.3
+semver v0.9.0
+semver-parser v0.7.0
+swc_atoms v5.0.0
+hstr v1.0.0
+hashbrown v0.14.5 (*)
+new_debug_unreachable v1.0.6
+once_cell v1.21.3
+phf v0.11.3
+phf_macros v0.11.3 (proc-macro)
+phf_generator v0.11.3
+phf_shared v0.11.3
+siphasher v1.0.1
+rand v0.8.5
+rand_core v0.6.4
+phf_shared v0.11.3 (*)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+phf_shared v0.11.3
+siphasher v1.0.1
+rustc-hash v2.1.1
+triomphe v0.1.14
+serde v1.0.219 (*)
+stable_deref_trait v1.2.0
+once_cell v1.21.3
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+swc_cached v2.0.0
+anyhow v1.0.97
+dashmap v5.5.3 (*)
+once_cell v1.21.3
+regex v1.11.1 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+swc_common v8.1.0
+anyhow v1.0.97
+ast_node v3.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+swc_macros_common v1.0.0
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+syn v2.0.100 (*)
+better_scoped_tls v1.0.0
+scoped-tls v1.0.1
+cfg-if v1.0.0
+either v1.15.0
+from_variant v2.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+swc_macros_common v1.0.0 (*)
+syn v2.0.100 (*)
+new_debug_unreachable v1.0.6
+num-bigint v0.4.6
+num-integer v0.1.46
+num-traits v0.2.19
+autocfg v1.4.0
+num-traits v0.2.19 (*)
+serde v1.0.219 (*)
+once_cell v1.21.3
+parking_lot v0.12.3 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+siphasher v0.3.11
+sourcemap v9.1.2 (*)
+swc_allocator v4.0.0
+allocator-api2 v0.2.21
+bumpalo v3.17.0
+allocator-api2 v0.2.21
+hashbrown v0.14.5 (*)
+ptr_meta v0.3.0
+ptr_meta_derive v0.3.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+rustc-hash v2.1.1
+triomphe v0.1.14 (*)
+swc_atoms v5.0.0 (*)
+swc_eq_ignore_macros v1.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+swc_visit v2.0.0
+either v1.15.0
+new_debug_unreachable v1.0.6
+tracing v0.1.41 (*)
+unicode-width v0.1.14
+url v2.5.4 (*)
+swc_compiler_base v18.0.0
+anyhow v1.0.97
+base64 v0.22.1
+once_cell v1.21.3
+pathdiff v0.2.3
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+sourcemap v9.1.2 (*)
+swc_allocator v4.0.0 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_config v2.0.0
+anyhow v1.0.97
+indexmap v2.9.0 (*)
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+sourcemap v9.1.2 (*)
+swc_cached v2.0.0 (*)
+swc_config_macro v1.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+swc_macros_common v1.0.0 (*)
+syn v2.0.100 (*)
+swc_ecma_ast v8.1.2
+bitflags v2.9.0
+is-macro v0.3.7 (proc-macro)
+heck v0.5.0
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+num-bigint v0.4.6 (*)
+once_cell v1.21.3
+phf v0.11.3 (*)
+rustc-hash v2.1.1
+scoped-tls v1.0.1
+serde v1.0.219 (*)
+string_enum v1.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+swc_macros_common v1.0.0 (*)
+syn v2.0.100 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_visit v2.0.0 (*)
+unicode-id-start v1.3.1
+swc_ecma_codegen v10.0.0
+ascii v1.1.0
+compact_str v0.7.1
+castaway v0.2.3
+rustversion v1.0.20 (proc-macro)
+cfg-if v1.0.0
+itoa v1.0.15
+ryu v1.0.20
+static_assertions v1.1.0
+memchr v2.7.4
+num-bigint v0.4.6 (*)
+once_cell v1.21.3
+regex v1.11.1 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+sourcemap v9.1.2 (*)
+swc_allocator v4.0.0 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_codegen_macros v2.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+swc_macros_common v1.0.0 (*)
+syn v2.0.100 (*)
+tracing v0.1.41 (*)
+swc_ecma_minifier v16.0.1
+arrayvec v0.7.6
+indexmap v2.9.0 (*)
+num-bigint v0.4.6 (*)
+num_cpus v1.16.0
+once_cell v1.21.3
+par-core v1.0.3 (*)
+par-iter v1.0.2 (*)
+parking_lot v0.12.3 (*)
+phf v0.11.3 (*)
+radix_fmt v1.0.0
+regex v1.11.1 (*)
+rustc-hash v2.1.1
+ryu-js v1.0.2
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+swc_allocator v4.0.0 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_config v2.0.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_codegen v10.0.0 (*)
+swc_ecma_parser v11.1.1
+arrayvec v0.7.6
+bitflags v2.9.0
+either v1.15.0
+new_debug_unreachable v1.0.6
+num-bigint v0.4.6 (*)
+num-traits v0.2.19 (*)
+phf v0.11.3 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+smallvec v1.14.0
+smartstring v1.0.1
+static_assertions v1.1.0
+autocfg v1.4.0
+version_check v0.9.5
+stacker v0.1.20
+cfg-if v1.0.0
+libc v0.2.171
+psm v0.1.25
+cc v1.2.19
+shlex v1.3.0
+windows-sys v0.52.0 (*)
+cc v1.2.19 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+tracing v0.1.41 (*)
+typed-arena v2.0.2
+swc_ecma_transforms_base v12.2.0
+better_scoped_tls v1.0.0 (*)
+bitflags v2.9.0
+indexmap v2.9.0 (*)
+once_cell v1.21.3
+par-core v1.0.3 (*)
+phf v0.11.3 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+smallvec v1.14.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_utils v12.0.0
+indexmap v2.9.0 (*)
+num_cpus v1.16.0
+once_cell v1.21.3
+par-core v1.0.3 (*)
+par-iter v1.0.2 (*)
+rustc-hash v2.1.1
+ryu-js v1.0.2
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_visit v8.0.0
+new_debug_unreachable v1.0.6
+num-bigint v0.4.6 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_visit v2.0.0 (*)
+tracing v0.1.41 (*)
+tracing v0.1.41 (*)
+unicode-id v0.3.5
+swc_ecma_visit v8.0.0 (*)
+tracing v0.1.41 (*)
+swc_ecma_transforms_optimization v12.0.0
+dashmap v5.5.3 (*)
+indexmap v2.9.0 (*)
+once_cell v1.21.3
+par-core v1.0.3 (*)
+petgraph v0.7.1
+fixedbitset v0.5.7
+indexmap v2.9.0 (*)
+rustc-hash v2.1.1
+serde_json v1.0.140 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+swc_macros_common v1.0.0 (*)
+syn v2.0.100 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+tracing v0.1.41 (*)
+swc_ecma_usage_analyzer v13.0.0
+indexmap v2.9.0 (*)
+rustc-hash v2.1.1
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_timer v1.0.0
+tracing v0.1.41 (*)
+tracing v0.1.41 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_timer v1.0.0 (*)
+tracing v0.1.41 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_timer v1.0.0 (*)
+swc_config v2.0.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_codegen v10.0.0 (*)
+swc_ecma_ext_transforms v12.0.0
+phf v0.11.3 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_lints v12.1.0
+auto_impl v1.3.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+dashmap v5.5.3 (*)
+par-core v1.0.3 (*)
+parking_lot v0.12.3 (*)
+regex v1.11.1 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_config v2.0.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_loader v8.0.0
+anyhow v1.0.97
+dashmap v5.5.3 (*)
+lru v0.10.1 (*)
+normpath v0.2.0
+winapi v0.3.9
+once_cell v1.21.3
+parking_lot v0.12.3 (*)
+path-clean v0.1.0
+pathdiff v0.2.3
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+swc_atoms v5.0.0 (*)
+swc_cached v2.0.0 (*)
+swc_common v8.1.0 (*)
+tracing v0.1.41 (*)
+swc_ecma_minifier v16.0.1 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_preset_env v16.0.0
+anyhow v1.0.97
+dashmap v5.5.3 (*)
+indexmap v2.9.0 (*)
+once_cell v1.21.3
+preset_env_base v3.0.0
+anyhow v1.0.97
+browserslist-rs v0.17.0
+ahash v0.8.11 (*)
+chrono v0.4.40
+num-traits v0.2.19 (*)
+windows-link v0.1.1
+either v1.15.0
+indexmap v2.9.0 (*)
+itertools v0.13.0
+either v1.15.0
+nom v7.1.3
+memchr v2.7.4
+minimal-lexical v0.2.1
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+thiserror v1.0.69
+thiserror-impl v1.0.69 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+dashmap v5.5.3 (*)
+from_variant v2.0.0 (proc-macro) (*)
+once_cell v1.21.3
+rustc-hash v2.1.1
+semver v1.0.26
+serde v1.0.219 (*)
+serde v1.0.219 (*)
+st-map v0.2.4
+arrayvec v0.7.6
+static-map-macro v0.3.4 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+tracing v0.1.41 (*)
+rustc-hash v2.1.1
+semver v1.0.26 (*)
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+st-map v0.2.4 (*)
+string_enum v1.0.0 (proc-macro) (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms v15.0.0
+par-core v1.0.3 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_compat v13.0.0
+arrayvec v0.7.6
+indexmap v2.9.0 (*)
+is-macro v0.3.7 (proc-macro) (*)
+num-bigint v0.4.6 (*)
+par-core v1.0.3 (*)
+serde v1.0.219 (*)
+smallvec v1.14.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_config v2.0.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_compat_bugfixes v12.0.0
+rustc-hash v2.1.1
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_compat_es2015 v12.0.0
+arrayvec v0.7.6
+indexmap v2.9.0 (*)
+is-macro v0.3.7 (proc-macro) (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+serde_derive v1.0.219 (proc-macro) (*)
+smallvec v1.14.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_config v2.0.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_compat_common v12.0.0
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_classes v12.0.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_common v12.0.0 (*)
+swc_ecma_compat_es2015 v12.0.0 (*)
+swc_ecma_compat_es2016 v12.0.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_es2017 v12.1.0
+serde v1.0.219 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_es2018 v12.0.0
+serde v1.0.219 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_compat_common v12.0.0 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_es2019 v12.0.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_es2020 v13.0.0
+serde v1.0.219 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_compat_es2022 v13.0.0
+rustc-hash v2.1.1
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_compat_common v12.0.0 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_classes v12.0.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_es2021 v12.0.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_compat_es2022 v13.0.0 (*)
+swc_ecma_compat_es3 v12.0.0
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_classes v12.0.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_trace_macro v2.0.0 (proc-macro) (*)
+tracing v0.1.41 (*)
+swc_ecma_transforms_module v13.0.0
+Inflector v0.11.4
+lazy_static v1.5.0
+regex v1.11.1 (*)
+anyhow v1.0.97
+bitflags v2.9.0
+indexmap v2.9.0 (*)
+is-macro v0.3.7 (proc-macro) (*)
+path-clean v1.0.1
+pathdiff v0.2.3
+regex v1.11.1 (*)
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+swc_atoms v5.0.0 (*)
+swc_cached v2.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_loader v8.0.0 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+tracing v0.1.41 (*)
+swc_ecma_transforms_optimization v12.0.0 (*)
+swc_ecma_transforms_proposal v12.0.1
+either v1.15.0
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+smallvec v1.14.0
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_classes v12.0.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_transforms_react v13.0.1
+base64 v0.22.1
+dashmap v5.5.3 (*)
+indexmap v2.9.0 (*)
+once_cell v1.21.3
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+sha1 v0.10.6
+cfg-if v1.0.0
+cpufeatures v0.2.17
+digest v0.10.7
+block-buffer v0.10.4
+generic-array v0.14.7
+typenum v1.18.0
+version_check v0.9.5
+crypto-common v0.1.6
+generic-array v0.14.7 (*)
+typenum v1.18.0
+string_enum v1.0.0 (proc-macro) (*)
+swc_allocator v4.0.0 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_config v2.0.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_macros v1.0.0 (proc-macro) (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_transforms_typescript v13.0.0
+once_cell v1.21.3
+rustc-hash v2.1.1
+ryu-js v1.0.2
+serde v1.0.219 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_react v13.0.1 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_ecma_transforms v15.0.0 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_compat v13.0.0 (*)
+swc_ecma_transforms_optimization v12.0.0 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+swc_error_reporters v10.0.0
+anyhow v1.0.97
+miette v7.5.0
+cfg-if v1.0.0
+miette-derive v7.5.0 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+owo-colors v4.2.0
+textwrap v0.16.2
+unicode-linebreak v0.1.5
+unicode-width v0.2.0
+thiserror v1.0.69 (*)
+unicode-width v0.1.14
+once_cell v1.21.3
+parking_lot v0.12.3 (*)
+serde v1.0.219 (*)
+serde_derive v1.0.219 (proc-macro) (*)
+serde_json v1.0.140 (*)
+swc_common v8.1.0 (*)
+swc_node_comments v8.0.0
+dashmap v5.5.3 (*)
+rustc-hash v2.1.1
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_timer v1.0.0 (*)
+swc_transform_common v2.0.0
+better_scoped_tls v1.0.0 (*)
+once_cell v1.21.3
+rustc-hash v2.1.1
+serde v1.0.219 (*)
+serde_json v1.0.140 (*)
+swc_common v8.1.0 (*)
+swc_typescript v11.0.1
+bitflags v2.9.0
+petgraph v0.7.1 (*)
+rustc-hash v2.1.1
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_utils v12.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+thiserror v1.0.69 (*)
+swc_visit v2.0.0 (*)
+tracing v0.1.41 (*)
+url v2.5.4 (*)
+swc_allocator v4.0.0 (*)
+swc_atoms v5.0.0 (*)
+swc_common v8.1.0 (*)
+swc_ecma_ast v8.1.2 (*)
+swc_ecma_codegen v10.0.0 (*)
+swc_ecma_parser v11.1.1 (*)
+swc_ecma_transforms_base v12.2.0 (*)
+swc_ecma_transforms_react v13.0.1 (*)
+swc_ecma_transforms_typescript v13.0.0 (*)
+swc_ecma_visit v8.0.0 (*)
+vergen v9.0.6
+anyhow v1.0.97
+cargo_metadata v0.19.2
+camino v1.1.9
+serde v1.0.219
+serde_derive v1.0.219 (proc-macro) (*)
+cargo-platform v0.1.9
+serde v1.0.219 (*)
+semver v1.0.26 (*)
+serde v1.0.219 (*)
+serde_json v1.0.140
+itoa v1.0.15
+memchr v2.7.4
+ryu v1.0.20
+serde v1.0.219 (*)
+thiserror v2.0.12
+thiserror-impl v2.0.12 (proc-macro)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+derive_builder v0.20.2
+derive_builder_macro v0.20.2 (proc-macro)
+derive_builder_core v0.20.2
+darling v0.20.11
+darling_core v0.20.11
+fnv v1.0.7
+ident_case v1.0.1
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+strsim v0.11.1
+syn v2.0.100 (*)
+darling_macro v0.20.11 (proc-macro)
+darling_core v0.20.11 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+proc-macro2 v1.0.94 (*)
+quote v1.0.40 (*)
+syn v2.0.100 (*)
+syn v2.0.100 (*)
+regex v1.11.1 (*)
+vergen-lib v0.1.6
+anyhow v1.0.97
+derive_builder v0.20.2 (*)
+rustversion v1.0.20 (proc-macro)
+rustversion v1.0.20 (proc-macro)
+tokio v1.44.1 (*)
+url v2.5.4 (*)

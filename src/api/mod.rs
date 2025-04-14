@@ -3,8 +3,8 @@ use std::{
     sync::{Arc, OnceLock},
 };
 
+use crate::specifier::ModuleSpecifier;
 use axum::{Json, Router, extract::Query, http::StatusCode, routing::get};
-use deno_graph::ModuleSpecifier;
 use serde::Serialize;
 
 use crate::graph::ModuleGraph;
