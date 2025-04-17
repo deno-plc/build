@@ -39,7 +39,11 @@ export class CanonicalRay implements Ray {
     }
 
     format(): string {
-        return `Trace:\n${this.steps.map((step, i) => `${`[${i}]`.padStart(2, " ")} ${step}`).join("\n")}`;
+        if (tracing) {
+            return `Trace:\n${this.steps.map((step, i) => `${`[${i}]`.padStart(2, " ")} ${step}`).join("\n")}`;
+        } else {
+            return `Set tracing = true to display a backtrace.`;
+        }
     }
 }
 

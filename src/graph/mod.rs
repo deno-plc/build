@@ -2,11 +2,13 @@ pub mod dependencies;
 
 use std::{
     collections::{HashMap, HashSet},
+    path::PathBuf,
     sync::Arc,
 };
 
-use crate::specifier::ModuleSpecifier;
+use crate::{npm::id::NPMPackageId, specifier::ModuleSpecifier};
 use dependencies::DependencyLink;
+use tokio::fs::read_to_string;
 use url::Url;
 
 use crate::deno::info::{self, DenoInfo, EsmDependency, EsmModule, Module};
@@ -19,6 +21,7 @@ pub struct ModuleGraph {
     root_specifier: Option<Arc<ModuleSpecifier>>,
     root_module: Option<Arc<ESMGraphModule>>,
     npm_packages: HashMap<String, Arc<NPMPackage>>,
+    pub root_dir: PathBuf,
 }
 
 const REDIRECT_LIMIT: usize = 10;
@@ -46,13 +49,13 @@ impl ModuleGraph {
         }
     }
 
-    pub async fn build(&mut self, info: DenoInfo) {
-        // let info = call_deno_info("deno", base, &root).await.unwrap();
+    pub async fn build(&mut self, info: DenoInfo, root_dir: PathBuf) {
+        self.root_dir = root_dir;
 
         for (long_name, package) in info.npm_packages {
             let package = NPMPackage::from_package(package);
 
-            let short_name = format!("{}@{}", package.package_name, package.version);
+            let short_name = package.id().to_string();
 
             if short_name != long_name {
                 self.npm_packages.insert(short_name, package.clone());
@@ -146,6 +149,10 @@ impl ModuleGraph {
 
         None
     }
+
+    pub fn get_npm_package(&self, id: &str) -> Option<Arc<NPMPackage>> {
+        self.npm_packages.get(id).cloned()
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -190,6 +197,7 @@ impl GraphModule {
 pub struct ESMGraphModule {
     specifier: Arc<ModuleSpecifier>,
     dependencies: DependencyLink<EsmDependency, GraphModule>,
+    local: PathBuf,
 }
 
 impl ESMGraphModule {
@@ -197,7 +205,12 @@ impl ESMGraphModule {
         Arc::new(Self {
             specifier: Arc::new(esm.specifier),
             dependencies: DependencyLink::new(esm.dependencies),
+            local: esm.local,
         })
+    }
+
+    pub fn specifier(&self) -> Arc<ModuleSpecifier> {
+        self.specifier.clone()
     }
 
     fn link(&self, resolve: impl Fn(&ModuleSpecifier) -> Option<GraphModule>) {
@@ -234,32 +247,73 @@ impl ESMGraphModule {
     pub fn lookup_table(&self) -> Option<HashMap<String, GraphModule>> {
         self.dependencies.try_resolved().cloned()
     }
+
+    pub async fn load_code(&self) -> Result<String, std::io::Error> {
+        read_to_string(self.local.clone()).await
+    }
 }
 
 #[derive(Debug)]
 pub struct NPMImportSpecifier {
     specifier: Arc<ModuleSpecifier>,
-    _package: Arc<NPMPackage>,
+    package: Arc<NPMPackage>,
 }
 
-impl NPMImportSpecifier {}
+impl NPMImportSpecifier {
+    pub fn specifier(&self) -> Arc<ModuleSpecifier> {
+        self.specifier.clone()
+    }
+
+    pub fn package(&self) -> Arc<NPMPackage> {
+        self.package.clone()
+    }
+
+    pub fn subpath(&self) -> String {
+        let mut first_has_at = false;
+
+        self.specifier
+            .path()
+            .split('/')
+            .enumerate()
+            .filter_map(|(i, part)| {
+                if i == 0 {
+                    assert!(part.is_empty());
+                    None
+                } else if i == 1 {
+                    first_has_at = part.starts_with('@');
+                    None
+                } else if i == 2 && first_has_at {
+                    None
+                } else {
+                    Some(part)
+                }
+            })
+            .collect::<Vec<_>>()
+            .join("/")
+    }
+}
 
 #[derive(Debug)]
 pub struct NPMPackage {
-    package_name: String,
-    version: String,
+    id: NPMPackageId,
     dependencies: DependencyLink<String, Arc<NPMPackage>>,
-    _registry_url: Url,
+    registry_url: Url,
 }
 
 impl NPMPackage {
     fn from_package(package: info::NpmPackage) -> Arc<Self> {
         Arc::new(Self {
-            package_name: package.name,
-            version: package.version,
+            id: NPMPackageId {
+                name: package.name,
+                version: package.version,
+            },
             dependencies: DependencyLink::new(package.dependencies),
-            _registry_url: package.registry_url,
+            registry_url: package.registry_url,
         })
+    }
+
+    pub fn id(&self) -> &NPMPackageId {
+        &self.id
     }
 
     fn import_specifier(
@@ -268,7 +322,7 @@ impl NPMPackage {
     ) -> Arc<NPMImportSpecifier> {
         Arc::new(NPMImportSpecifier {
             specifier,
-            _package: self,
+            package: self,
         })
     }
 
@@ -280,15 +334,23 @@ impl NPMPackage {
                 if let Some(module) = resolve(dep) {
                     resolved.insert(dep.clone(), module);
                 } else {
-                    eprintln!(
-                        "Failed to resolve dependency {} from {}@{}",
-                        dep, self.package_name, self.version
-                    );
+                    eprintln!("Failed to resolve dependency {} from {}", dep, self.id);
                 }
             }
 
             self.dependencies.set_resolved(resolved).unwrap();
         }
+    }
+
+    pub fn registry_url(&self) -> &Url {
+        &self.registry_url
+    }
+
+    pub fn dependencies(&self) -> Vec<NPMPackageId> {
+        self.dependencies
+            .try_resolved()
+            .map(|deps| deps.iter().map(|(_, v)| v.id().clone()).collect())
+            .unwrap_or_default()
     }
 }
 
@@ -302,5 +364,9 @@ impl VirtualModule {
         Self {
             specifier: Arc::new(specifier),
         }
+    }
+
+    pub fn specifier(&self) -> Arc<ModuleSpecifier> {
+        self.specifier.clone()
     }
 }

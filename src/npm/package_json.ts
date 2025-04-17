@@ -73,7 +73,9 @@ export class PackageJson {
                 this.#export_map.set(".", main_res);
             }
         } else {
-            const main = parse_export_level(this.raw_content, () => { }, this.ray);
+            const main = parse_export_level(this.raw_content, (_, __, ray) => {
+                // throw new Error(`Unexpected export map without exports\n${ray.to_canonical().format()}`);
+            }, this.ray);
             if (main) {
                 this.#export_map.set(".", main);
             }
@@ -85,7 +87,7 @@ export class PackageJson {
     }
 }
 
-function parse_export_level(src: unknown, report_entry: (id: string, res: string) => void, ray: Ray): string | null {
+function parse_export_level(src: unknown, report_entry: (id: string, res: string, ray: Ray) => void, ray: Ray): string | null {
     if (typeof src === "string") {
         if (src.startsWith(".")) {
             return src;
@@ -104,17 +106,21 @@ function parse_export_level(src: unknown, report_entry: (id: string, res: string
     } else if (typeof src === "object" && src !== null) {
         for (const [key, value] of Object.entries(src)) {
             if (key.startsWith(".")) {
+                const entry_ray = tracing ? new SparseRay(ray, `Entry: ${key}`) : ray;
                 const res = parse_export_level(value, (id: string) => {
-                    throw new Error(`FatalError: Nested exports are not allowed: (parent=${key}, key=${id})`);
-                }, tracing ? new SparseRay(ray, `Entry: ${key}`) : ray);
+                    throw new Error(`FatalError: Nested exports are not allowed: (parent=${key}, key=${id})\n${entry_ray.to_canonical().format()}`);
+                }, entry_ray);
                 if (res) {
-                    report_entry(key, res!);
+                    report_entry(key, res, entry_ray);
                 }
             }
         }
         for (const t of ["import", "module", "browser", "deno", "require", "node", "main", "default"]) {
             if (t in src) {
-                return parse_export_level((src as Record<string, unknown>)[t], report_entry, tracing ? new SparseRay(ray, `.'${t}'`) : ray);
+                const res = parse_export_level((src as Record<string, unknown>)[t], report_entry, tracing ? new SparseRay(ray, `.'${t}'`) : ray);
+                if (res) {
+                    return res;
+                }
             }
         }
     }

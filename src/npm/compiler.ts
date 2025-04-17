@@ -17,15 +17,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { SemVer } from "@std/semver";
+import { format, type SemVer } from "@std/semver";
 import * as esbuild from "esbuild";
 import { join } from "@std/path/join";
 import { PackageJson } from "./package_json.ts";
 import { toFileUrl } from "@std/path/to-file-url";
 import { assertEquals } from "@std/assert/equals";
-import { getLocalPackagePath, type NPMPackage, npmToCanonical } from "./package.ts";
+import { fetchPackageMetadata, getLocalPackagePath, getRegistry, type NPMPackage, npmToCanonical, parseNPMSpecifier } from "./package.ts";
 import type { FullConfig } from "../config.ts";
 import { assert } from "@std/assert/assert";
+import { deno_info } from "../deno/info.ts";
 
 export class NPMCompiler {
     constructor(readonly config: FullConfig) { }
@@ -34,17 +35,31 @@ export class NPMCompiler {
     #queue = new Map<string, Promise<CompiledNPMPackage>>();
 
     async #compile(package_name: string, version: SemVer): Promise<CompiledNPMPackage> {
-        const local_path = await getLocalPackagePath(package_name, version);
+        const { denoDir, npmCache } = await deno_info;
+
+        const metadata = await fetchPackageMetadata({ name: package_name, version });
+
+        const registry = metadata.registry_url.hostname;
+
+        const local_path = join(npmCache, registry, package_name, format(version));
+
         const package_json = await PackageJson.load(toFileUrl(join(local_path, "package.json")));
 
         assertEquals(package_json.raw_content.name, package_name, `Package name mismatch`);
 
-        const outdir = join(local_path, "virtual-dist");
+        const output_magic = crypto.randomUUID();
 
-        const external_mapping = new Map<string, string>();
+        const outdir = join(local_path, output_magic);
+
+        // const external_mapping = new Map<string, string>();
+
+        const export_paths = new Map<string, string>();
+
+        // deno-lint-ignore no-this-alias
+        const compiler = this;
 
         const res = await esbuild.build({
-            entryPoints: [...package_json.export_map().entries()]
+            entryPoints: await Promise.all([...package_json.export_map().entries()]
                 .filter(([e, i]) => {
                     if (e.includes("*") || e.endsWith("package.json") || i.endsWith("package.json") || e.endsWith(".css")) {
                         return false;
@@ -52,25 +67,18 @@ export class NPMCompiler {
 
                     return true;
                 })
-                .map(([, i]) => join(local_path, i)),
+                .map(([e, i]) => {
+                    const path = join(local_path, i);
+                    export_paths.set(e, join(local_path, output_magic, i));
+                    return path;
+                })
+                .map(async (path) => {
+                    console.log(`entry point: ${path}`);
+                    await Deno.stat(path);
+
+                    return (path);
+                })),
             plugins: [
-                {
-                    name: "dependencies",
-                    setup(build) {
-                        build.onResolve({
-                            filter: /^[^\.]/,
-                        }, (args) => {
-                            console.log(`external: ${args.path}`);
-                            const replace_id = crypto.randomUUID();
-                            external_mapping.set(args.path, replace_id);
-                            return {
-                                path: replace_id,
-                                namespace: "npm-deps",
-                                external: true,
-                            };
-                        });
-                    },
-                },
                 {
                     name: "self-reference",
                     setup(build) {
@@ -125,6 +133,76 @@ export class NPMCompiler {
                         });
                     }
                 },
+                {
+                    name: "npm package dependencies",
+                    setup(build) {
+                        build.onResolve({
+                            filter: /^[^\.]/,
+                        }, async (args) => {
+                            if (args.kind === "entry-point") {
+                                return {};
+                            }
+                            const spec = args.path;
+                            if (spec.startsWith("node:")) {
+                                return {
+                                    path: `/@node/${spec.slice(5)}`,
+                                    namespace: "node-builtins",
+                                    external: true,
+                                };
+                            }
+
+                            let subpath_index = -1;
+
+                            if (spec.startsWith("@")) {
+                                subpath_index = spec.indexOf("/", spec.indexOf("/", 1) + 1);
+                            } else {
+                                subpath_index = spec.indexOf("/", 1);
+                            }
+
+                            if (subpath_index === -1) {
+                                subpath_index = spec.length;
+                            }
+
+                            const subpath = spec.slice(subpath_index + 1);
+
+                            const dep_name = spec.slice(0, subpath_index);
+
+                            const dep_version = metadata.dependencies.get(dep_name);
+
+                            if (!dep_version) {
+                                return {
+                                    path: `/@module/error/${encodeURIComponent(`Package ${dep_name} not found in dependencies of ${package_name}`)}`,
+                                    namespace: "error-fake-url",
+                                    external: true,
+                                };
+                            }
+
+                            const dep = await compiler.get_compiled({
+                                name: dep_name,
+                                version: dep_version,
+                            });
+
+                            const exp = dep.get_export(subpath ? `./${subpath}` : ".");
+
+                            assert(exp, `Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
+
+                            return {
+                                path: `/@npm-src/${encodeURIComponent(dep_name)}/${format(dep_version)}/${exp}`,
+                                namespace: "npm-deps",
+                                external: true,
+                            };
+                        });
+                    },
+                },
+                {
+                    name: "commonjs subpath imports",
+                    setup(build) {
+                        build.onLoad({ namespace: "cjs-subpath-imports", filter: /./ }, async args => {
+                            // args.;
+                            return null;
+                        });
+                    },
+                },
             ],
             write: false,
             outdir,
@@ -132,7 +210,9 @@ export class NPMCompiler {
             splitting: true,
             format: "esm",
             platform: "neutral",
+            metafile: true,
             minify: true,
+            absWorkingDir: denoDir,
         });
 
         for (const chunk of res.outputFiles) {
@@ -141,7 +221,7 @@ export class NPMCompiler {
             // console.log(`${filename}: ${chunk.contents.length} bytes ${chunk.hash}`);
         }
 
-        return new CompiledNPMPackage(package_name, version, res, external_mapping);
+        return new CompiledNPMPackage(package_name, version, res, denoDir, registry, export_paths, output_magic);
     }
 
     async get_compiled(pkg: NPMPackage): Promise<CompiledNPMPackage> {
@@ -154,24 +234,89 @@ export class NPMCompiler {
             return await this.#queue.get(canonical)!;
         }
         this.config.logger.info`Compiling npm:${canonical}`;
-        const promise = this.#compile(pkg.name, pkg.version);
+        let resolve: (r: CompiledNPMPackage) => void = () => { };
+
+        const promise = new Promise<CompiledNPMPackage>(r => {
+            resolve = r;
+        });
+
         this.#queue.set(canonical, promise);
-        const res = await promise;
+
+        const res = await this.#compile(pkg.name, pkg.version).catch(e => {
+            this.config.logger.error`Failed to compile npm:${canonical}: ${e}`;
+            // block
+            return new Promise<CompiledNPMPackage>(_resolve => { });
+        });
+
         this.#cache.set(canonical, res);
+
+        resolve(res);
+
         this.#queue.delete(canonical);
+
         this.config.logger.info`Successfully compiled npm:${canonical}`;
         return res;
-    }
+    };
 }
 
 export class CompiledNPMPackage {
+    readonly files = new Map<string, esbuild.OutputFile>();
+    readonly exports: Map<string, string>;
     constructor(
         readonly name: string,
         readonly version: SemVer,
         readonly build: esbuild.BuildResult,
-        readonly external_mapping: Map<string, string>,
+        _deno_dir: string,
+        registry: string,
+        export_paths: Map<string, string>,
+        output_magic: string,
     ) {
+        const compiler_mapping = new Map<string, string>();
+        for (const [file, info] of Object.entries(build.metafile!.outputs)) {
+            if (info.entryPoint) {
+                console.log(info.entryPoint);
+                // const path = join(deno_dir, file);
+                const path = file.split(output_magic)[1].substring(1);
+                const raw_export_paths = info.entryPoint.split("/");
+                assertEquals(raw_export_paths.shift(), "npm");
+                assertEquals(raw_export_paths.shift(), registry);
+                const raw_package_name_1 = raw_export_paths.shift();
+                if (raw_package_name_1?.startsWith("@")) {
+                    raw_export_paths.shift();
+                }
+                assertEquals(raw_export_paths.shift(), format(this.version));
 
+                const raw_export_name = raw_export_paths.join("/");
+                compiler_mapping.set(raw_export_name, path);
+            }
+        }
+        // console.log("metafile", build.metafile);
+        // console.log("mapped export paths", new Map(export_paths.entries().map(([e, path]) => [e, path.split(output_magic)[1]?.substring(1) ?? path])));
+        // console.log("compiler mapping", compiler_mapping);
+        // console.log("export paths", export_paths);
+        this.exports = new Map(
+            [...export_paths.entries()]
+                .map(([e, path]) => [e,
+                    compiler_mapping.get(
+                        path
+                            .split(output_magic)[1]
+                            .substring(1)
+                            .replaceAll("\\", "/"))!]));
+
+        // console.log("exports", this.exports);
+        for (const chunk of build.outputFiles ?? []) {
+            const path = chunk.path.split(output_magic)[1].substring(1).replaceAll("\\", "/");
+            this.files.set(path, chunk);
+            // console.log(`File: ${path} (${chunk.contents.length} bytes)`);
+        }
+    }
+
+    get_export(subpath: string): string | null {
+        return this.exports.get(subpath) ?? null;
+    }
+
+    get_file(path: string): esbuild.OutputFile | null {
+        return this.files.get(path) ?? null;
     }
 }
 
