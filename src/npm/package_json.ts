@@ -53,12 +53,15 @@ export class PackageJson {
     }
     #export_map: Map<string, string> | undefined;
 
+    public export_type?: "exports" | "commonjs";
+
     #parse_exports() {
         if (this.#export_map) return;
 
         this.#export_map = new Map();
 
         if (this.raw_content.exports) {
+            this.export_type = "exports";
             const wildcard_exports = new Set<string>();
             const report = (id: string, res: string) => {
                 this.#export_map!.set(id, res);
@@ -73,6 +76,7 @@ export class PackageJson {
                 this.#export_map.set(".", main_res);
             }
         } else {
+            this.export_type = "commonjs";
             const main = parse_export_level(this.raw_content, (_, __, ray) => {
                 // throw new Error(`Unexpected export map without exports\n${ray.to_canonical().format()}`);
             }, this.ray);

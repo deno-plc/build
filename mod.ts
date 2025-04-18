@@ -6,6 +6,24 @@ import { toFileUrl } from "@std/path/to-file-url";
 import { NPMPackage } from "./src/npm/package.ts";
 import { format, parse } from "@std/semver";
 import { NPMCompiler } from "./src/npm/compiler.ts";
+import { configure, getConsoleSink } from "@logtape/logtape";
+
+await configure({
+    sinks: {
+        console: getConsoleSink(),
+    },
+    loggers: [
+        {
+            category: ["app"],
+            sinks: ["console"],
+            lowestLevel: "debug",
+        },
+        {
+            category: ["logtape", "meta"],
+            lowestLevel: "warning",
+        }
+    ]
+});
 
 const config = config_defaults({
     root: "../technik-app"

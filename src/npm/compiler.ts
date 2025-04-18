@@ -35,15 +35,27 @@ export class NPMCompiler {
     #queue = new Map<string, Promise<CompiledNPMPackage>>();
 
     async #compile(package_name: string, version: SemVer): Promise<CompiledNPMPackage> {
+        // console.log(`Compiling npm:${package_name}@${format(version)}`);
         const { denoDir, npmCache } = await deno_info;
 
+        if (package_name === "util") {
+            console.log("compiling util");
+
+        }
         const metadata = await fetchPackageMetadata({ name: package_name, version });
+        if (package_name === "util") {
+            console.log("got util metadata");
+        }
 
         const registry = metadata.registry_url.hostname;
 
         const local_path = join(npmCache, registry, package_name, format(version));
 
         const package_json = await PackageJson.load(toFileUrl(join(local_path, "package.json")));
+
+        if (package_name === "util") {
+            console.log("got util packgae.json");
+        }
 
         assertEquals(package_json.raw_content.name, package_name, `Package name mismatch`);
 
@@ -57,6 +69,10 @@ export class NPMCompiler {
 
         // deno-lint-ignore no-this-alias
         const compiler = this;
+
+        if (package_name === "util") {
+            console.log("compiling util");
+        }
 
         const res = await esbuild.build({
             entryPoints: await Promise.all([...package_json.export_map().entries()]
@@ -73,7 +89,7 @@ export class NPMCompiler {
                     return path;
                 })
                 .map(async (path) => {
-                    console.log(`entry point: ${path}`);
+                    // console.log(`entry point: ${path}`);
                     await Deno.stat(path);
 
                     return (path);
@@ -184,13 +200,23 @@ export class NPMCompiler {
 
                             const exp = dep.get_export(subpath ? `./${subpath}` : ".");
 
-                            assert(exp, `Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
+                            // assert(exp, `Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
 
-                            return {
-                                path: `/@npm-src/${encodeURIComponent(dep_name)}/${format(dep_version)}/${exp}`,
-                                namespace: "npm-deps",
-                                external: true,
-                            };
+                            if (exp) {
+                                return {
+                                    path: `/@npm-src/${encodeURIComponent(dep_name)}/${format(dep_version)}/${exp}`,
+                                    namespace: "npm-deps",
+                                    external: true,
+                                };
+                            } else /* if (true) */ {
+                                return {
+                                    path: `${encodeURIComponent(`${dep_name}`)}/${subpath}`,
+                                    namespace: "cjs-subpath-imports",
+                                    external: false,
+                                };
+                                // } else {
+                                // throw new Error(`[56] Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
+                            }
                         });
                     },
                 },
@@ -198,8 +224,17 @@ export class NPMCompiler {
                     name: "commonjs subpath imports",
                     setup(build) {
                         build.onLoad({ namespace: "cjs-subpath-imports", filter: /./ }, async args => {
-                            // args.;
-                            return null;
+                            const spec = args.path;
+
+                            const parts = spec.split("/");
+                            const import_id = decodeURIComponent(parts.shift()!);
+
+                            const code = `import * as $mod from "${import_id}"; const $exp = $mod.${parts.join(".")}; export default $exp;`;
+
+                            return {
+                                contents: code,
+                                loader: "js",
+                            } satisfies esbuild.OnLoadResult;
                         });
                     },
                 },
@@ -214,6 +249,10 @@ export class NPMCompiler {
             minify: true,
             absWorkingDir: denoDir,
         });
+
+        if (package_name === "util") {
+            console.log("compiled util");
+        }
 
         for (const chunk of res.outputFiles) {
             assert(chunk.path.startsWith(outdir));
@@ -254,7 +293,7 @@ export class NPMCompiler {
 
         this.#queue.delete(canonical);
 
-        this.config.logger.info`Successfully compiled npm:${canonical}`;
+        // this.config.logger.info`Successfully compiled npm:${canonical}`;
         return res;
     };
 }
@@ -274,7 +313,7 @@ export class CompiledNPMPackage {
         const compiler_mapping = new Map<string, string>();
         for (const [file, info] of Object.entries(build.metafile!.outputs)) {
             if (info.entryPoint) {
-                console.log(info.entryPoint);
+                // console.log(info.entryPoint);
                 // const path = join(deno_dir, file);
                 const path = file.split(output_magic)[1].substring(1);
                 const raw_export_paths = info.entryPoint.split("/");
@@ -309,6 +348,8 @@ export class CompiledNPMPackage {
             this.files.set(path, chunk);
             // console.log(`File: ${path} (${chunk.contents.length} bytes)`);
         }
+
+        // console.log(`Compiled ${this.name}@${format(this.version)} (${this.files.size} files)`);
     }
 
     get_export(subpath: string): string | null {
