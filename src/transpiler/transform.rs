@@ -8,7 +8,7 @@ use swc_core::atoms::Atom;
 use swc_core::common::comments::{Comment, CommentKind, Comments, SingleThreadedComments};
 use swc_core::common::sync::Lrc;
 use swc_core::common::{BytePos, DUMMY_SP, FileName, GLOBALS, Mark, SourceMap, Spanned};
-use swc_core::ecma::ast::{self, ModuleDecl, Str};
+use swc_core::ecma::ast::{ModuleDecl, Str};
 use swc_core::ecma::codegen::Emitter;
 use swc_core::ecma::codegen::text_writer::JsWriter;
 use swc_core::ecma::parser::lexer::Lexer;
@@ -58,7 +58,15 @@ impl ImportResolver {
     fn resolve_import(&self, src: &mut Box<Str>, span_hi: BytePos) {
         let import_path = src.value.as_str();
 
-        let resolved = self.module.lookup_import(import_path);
+        let mut resolved = self.module.lookup_import(import_path);
+
+        if resolved.is_none() {
+            println!(
+                "Trying to resolve import {} with global packages",
+                import_path
+            );
+            resolved = self.graph.global_package_imports.get(import_path).cloned();
+        }
 
         let import_comment: Vec<String> = vec![format!(" import \"{}\";", import_path)];
 
@@ -145,7 +153,10 @@ impl ImportResolver {
             //     _ => "/@module/error/unsupported-scheme".to_string(),
             // }
         } else {
-            "/@module/error/failed-to-resolve".to_string()
+            format!(
+                "/@module/error/{}",
+                encode(&format!("Failed to resolve import {}", import_path))
+            )
         };
 
         src.raw = None;
@@ -295,8 +306,6 @@ pub fn transform_code(options: TransformOptions) -> TransformResult {
 
         let mut output_buffer = Vec::new();
         let mut output_mapping = Vec::new();
-
-        // comments.add
 
         Emitter {
             cfg: Default::default(),

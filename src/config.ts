@@ -19,11 +19,16 @@
 
 import { getLogger, type Logger } from "@logtape/logtape";
 import { join } from "@std/path/join";
+import { isAbsolute } from "@std/path/is-absolute";
 
 export interface BuildConfig {
     bundler_path_prefix?: string;
     logger?: Logger,
     root?: string,
+    /**
+     * List of npm packages that are redirected to esm.sh
+     */
+    cdn?: string[],
 }
 
 export type FullConfig = Required<BuildConfig>;
@@ -32,10 +37,11 @@ export function config_defaults(config: BuildConfig): FullConfig {
     return {
         bundler_path_prefix: "/@id/",
         logger: getLogger(["app", "deno-plc", "build"]),
+        cdn: [],
 
         ...config,
 
-        root: join(Deno.cwd(), config.root ?? "."),
+        root: isAbsolute(config.root ?? ".") ? config.root! : join(Deno.cwd(), config.root ?? "."),
     };
 }
 

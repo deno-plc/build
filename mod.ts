@@ -1,232 +1,165 @@
 import { Hono } from "hono";
-import { config_defaults } from "./src/config.ts";
-import { join, normalize, relative } from "@std/path/posix";
-import { transform } from "./src/transpiler/transform.ts";
+import { type BuildConfig, config_defaults } from "./src/config.ts";
+import { join, normalize } from "@std/path/posix";
 import { toFileUrl } from "@std/path/to-file-url";
-import { NPMPackage } from "./src/npm/package.ts";
+import type { NPMPackage } from "./src/npm/package.ts";
 import { format, parse } from "@std/semver";
 import { NPMCompiler } from "./src/npm/compiler.ts";
-import { configure, getConsoleSink } from "@logtape/logtape";
+import { assert } from "node:console";
+import { deno_info } from "./src/deno/info.ts";
+import { serveFile } from "@std/http/file-server";
 
-await configure({
-    sinks: {
-        console: getConsoleSink(),
-    },
-    loggers: [
-        {
-            category: ["app"],
-            sinks: ["console"],
-            lowestLevel: "debug",
-        },
-        {
-            category: ["logtape", "meta"],
-            lowestLevel: "warning",
-        }
-    ]
-});
+export function deno_plc_build(config_options: BuildConfig = {}): Hono {
+    const config = config_defaults(config_options);
 
-const config = config_defaults({
-    root: "../technik-app"
-});
+    const npm_compiler = new NPMCompiler(config);
 
-const npm_compiler = new NPMCompiler(config);
+    const app = new Hono();
 
-// const info 
-
-const app = new Hono();
-
-app.get("/", c => {
-    return c.html(`
-<!DOCTYPE html>
-<html class="color-brand">
-                <head>
-                    <title>LMGU-Technik Dashboard (Development Mode)</title>
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1"
-                    />
-                    
-                    <!--<script type="module" src="/dev-assets/tailwind-play" async />
-
-                    <script type="module" src="/@vite/client" async />-->
-                    <script type="module" src="/frontend/dev.client.tsx" async></script>
-
-                    <!--<script type="module" src="/@id/@xterm/xterm/css/xterm.css" async />-->
-                </head>
-                <body>
-                    <span class="bg-[#111] text-brand flex flex-row items-center justify-center w-full h-full">
-                        loading...
-                    </span>
-                </body>
-            </html>
-            `);
-});
-
-app.get("/favicon.ico", () => {
-    return fetch("https://deno.com/favicon.ico");
-});
-
-app.get("/@module/error/:id", c => {
-    return new Response(`throw new Error(${JSON.stringify(`Failed to import module: ${decodeURIComponent(c.req.param("id"))}`)});`, {
-        headers: {
-            "Content-Type": "application/javascript;charset=UTF-8",
-            "Cache-Control": "no-store",
-        },
+    app.get("/@module/error/:id", c => {
+        return new Response(`throw new Error(${JSON.stringify(`Failed to import module: ${decodeURIComponent(c.req.param("id"))}`)});`, {
+            headers: {
+                "Content-Type": "application/javascript;charset=UTF-8",
+                "Cache-Control": "no-store",
+            },
+        });
     });
-});
 
-app.get("/@module/:id", async c => {
-    let module_id;
-    try {
-        module_id = new URL(decodeURIComponent(c.req.param("id")));
-    } catch (_e) {
-        return c.text("Invalid module id", 400);
-    }
+    app.get("/@module/:id", async c => {
+        let module_id;
+        try {
+            module_id = new URL(decodeURIComponent(c.req.param("id")));
+        } catch (_e) {
+            return c.text("Invalid module id", 400);
+        }
 
-    return await serveModule(module_id);
-});
+        return await serveModule(module_id) ?? c.text("Module not found", 404);
+    });
 
-app.get("/@npm/:package/:version/:file", async c => {
-    // const full_import = decodeURIComponent(c.req.param("id"));
-    // console.log("Full import:", full_import);
-    // let subpath_pos = full_import.indexOf("/", 1);
-    // if (subpath_pos === -1) {
-    //     subpath_pos = full_import.length;
-    // }
-    // const [name, version] = full_import.slice(0, subpath_pos).split("@");
-    // const subpath = full_import.slice(subpath_pos + 1);
+    app.get("/@npm/:package/:version/:file", async c => {
+        const name = decodeURIComponent(c.req.param("package"));
+        const version = parse(c.req.param("version"));
+        let subpath = decodeURIComponent(c.req.param("file"));
 
-    const name = decodeURIComponent(c.req.param("package"));
-    const version = parse(c.req.param("version"));
-    let subpath = decodeURIComponent(c.req.param("file"));
+        if (subpath.startsWith("/")) {
+            subpath = "." + subpath;
+        } else if (!subpath.startsWith(".")) {
+            subpath = "./" + subpath;
+        }
 
-    if (subpath.startsWith("/")) {
-        subpath = "." + subpath;
-    } else if (!subpath.startsWith(".")) {
-        subpath = "./" + subpath;
-    }
+        if (subpath.endsWith("/")) {
+            subpath = subpath.slice(0, -1);
+        }
 
-    if (subpath.endsWith("/")) {
-        subpath = subpath.slice(0, -1);
-    }
+        if (config.cdn.includes(name)) {
+            return c.redirect(new URL(`https://esm.sh/${name}@${format(version)}/${subpath}`));
+        }
 
-    // console.log({ name, version, subpath });
+        const pkg_id: NPMPackage = {
+            name,
+            version,
+        };
 
-    const pkg_id: NPMPackage = {
-        name,
-        version,
-    };
+        const pkg = await npm_compiler.get_compiled(pkg_id);
 
-    const pkg = await npm_compiler.get_compiled(pkg_id);
+        const file = pkg.get_export(subpath);
 
-    // let subpath
+        return c.redirect(`/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`);
+    });
 
-    // console.log(pkg.exports);
-    // pkg.
+    app.get("/@npm/:package/:version", async c => {
+        const name = decodeURIComponent(c.req.param("package"));
+        const version = parse(c.req.param("version"));
 
-    const file = pkg.get_export(subpath);
+        if (config.cdn.includes(name)) {
+            return c.redirect(new URL(`https://esm.sh/${name}@${format(version)}`));
+        }
 
-    return c.redirect(`/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`);
+        const pkg_id: NPMPackage = {
+            name,
+            version,
+        };
 
-    // return c.text("ok");
-});
+        const pkg = await npm_compiler.get_compiled(pkg_id);
 
-app.get("/@npm/:package/:version", async c => {
-    const name = decodeURIComponent(c.req.param("package"));
-    const version = parse(c.req.param("version"));
+        const file = pkg.get_export(".");
 
-    const pkg_id: NPMPackage = {
-        name,
-        version,
-    };
+        if (!file) {
+            return c.text("File not found", 404);
+        }
 
-    const pkg = await npm_compiler.get_compiled(pkg_id);
+        return c.redirect(`/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`);
+    });
 
-    if (name === "util") {
-        console.log("Util package:", pkg);
-    }
+    app.get("/@npm-src/:package/:version/*", async c => {
+        const name = decodeURIComponent(c.req.param("package"));
+        const version = (c.req.param("version"));
+        const url = new URL(c.req.url);
+        const path = url.pathname.split(`${version}/`)[1];
 
-    const file = pkg.get_export(".");
+        const pkg_id: NPMPackage = {
+            name,
+            version: parse(version),
+        };
 
-    if (!file) {
-        return c.text("File not found", 404);
-    }
+        const pkg = await npm_compiler.get_compiled(pkg_id);
 
-    return c.redirect(`/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`);
-});
+        const file = pkg.get_file(path);
 
-// async function getNPMRedirect
-
-app.get("/@npm-src/:package/:version/*", async c => {
-    const name = decodeURIComponent(c.req.param("package"));
-    const version = (c.req.param("version"));
-    const url = new URL(c.req.url);
-    const path = url.pathname.split(`${version}/`)[1];
-    // const file = decodeURIComponent(c.req.param("file"));
-
-    const pkg_id: NPMPackage = {
-        name,
-        version: parse(version),
-    };
-
-    const pkg = await npm_compiler.get_compiled(pkg_id);
-
-    const file = pkg.get_file(path);
-
-    if (!file) {
-        return c.text("File not found", 404);
-    } else {
-        return c.body(file.contents, 200, {
-            "Content-Type": "text/javascript;charset=UTF-8",
-            "Cache-Control": "no-store",
-        });
-    }
-});
-
-app.get("/*", async (c) => {
-    const url = new URL(c.req.url);
-    const normalizedPath = normalize(url.pathname);
-
-    if (normalizedPath.startsWith(".")) {
-        config.logger.warn`Path traversal attempt detected: requested='${url.pathname}' normalized='${normalizedPath}'`;
-        return c.text("Access denied", 403);
-    }
-
-    // const file = await Deno.readTextFile(join(config.root, normalizedPath));
-
-    // console.log("File:", file);
-
-    const module_id = toFileUrl(join(config.root, normalizedPath));
-
-    return await serveModule(module_id);
-});
-
-async function serveModule(specifier: URL) {
-    const api_url = new URL("http://[::1]:3000/api/v1/transform/module");
-
-    api_url.searchParams.set("module", specifier.href);
-
-    const res = await fetch(api_url);
-
-    if (res.ok) {
-        return new Response((await res.json()).result.code, {
-            headers: {
-                "Content-Type": "application/javascript",
+        if (!file) {
+            return c.text("File not found", 404);
+        } else {
+            return c.body(file.contents, 200, {
+                "Content-Type": "text/javascript;charset=UTF-8",
                 "Cache-Control": "no-store",
-            },
-        });
-    } else {
-        console.log("Error:", res.status, res.statusText, specifier.href);
-        return new Response("Module not found", {
-            status: 404,
-            headers: {
-                "Content-Type": "text/plain",
-                "Cache-Control": "no-store",
-            },
-        });
+            });
+        }
+    });
+
+    app.get("/@npm-data/*", async c => {
+        const url = new URL(c.req.url);
+
+        const path = url.pathname.split("/@npm-data/")[1];
+
+        assert(!path.includes(".."), "Path traversal attempt detected");
+
+        const real_path = join((await deno_info).npmCache, path);
+
+        return serveFile(c.req.raw, real_path);
+    });
+
+    app.get("/*", async (c, next) => {
+        const url = new URL(c.req.url);
+        const normalizedPath = normalize(url.pathname);
+
+        if (normalizedPath.startsWith(".")) {
+            config.logger.warn`Path traversal attempt detected: requested='${url.pathname}' normalized='${normalizedPath}'`;
+            return c.text("Access denied", 403);
+        }
+
+        const module_id = toFileUrl(join(config.root, normalizedPath));
+
+        return (await serveModule(module_id)) ?? await next();
+    });
+
+    async function serveModule(specifier: URL) {
+        const api_url = new URL("http://[::1]:3000/api/v1/transform/module");
+
+        api_url.searchParams.set("module", specifier.href);
+
+        const res = await fetch(api_url);
+
+        if (res.ok) {
+            return new Response((await res.json()).result.code, {
+                headers: {
+                    "Content-Type": "application/javascript",
+                    "Cache-Control": "no-store",
+                },
+            });
+        } else {
+            return null;
+        }
     }
+
+    return app;
 }
-
-Deno.serve({
-    port: 80,
-}, app.fetch);

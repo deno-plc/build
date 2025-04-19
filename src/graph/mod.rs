@@ -21,6 +21,7 @@ pub struct ModuleGraph {
     root_specifier: Option<Arc<ModuleSpecifier>>,
     root_module: Option<Arc<ESMGraphModule>>,
     npm_packages: HashMap<String, Arc<NPMPackage>>,
+    pub global_package_imports: HashMap<String, GraphModule>,
     pub root_dir: PathBuf,
 }
 
@@ -119,10 +120,16 @@ impl ModuleGraph {
         for (_spec, module) in self.modules.iter() {
             match module {
                 GraphModule::Esm(m) => {
-                    m.link(|specifier| self.get_module_with_redirect(specifier, 0));
+                    let global_packages =
+                        m.link(|specifier| self.get_module_with_redirect(specifier, 0));
+                    self.global_package_imports.extend(global_packages);
                 }
                 _ => {}
             }
+        }
+
+        for (id, module) in &self.global_package_imports {
+            println!("Global package import: {} -> {}", id, module.specifier());
         }
     }
 
@@ -213,15 +220,23 @@ impl ESMGraphModule {
         self.specifier.clone()
     }
 
-    fn link(&self, resolve: impl Fn(&ModuleSpecifier) -> Option<GraphModule>) {
+    fn link(
+        &self,
+        resolve: impl Fn(&ModuleSpecifier) -> Option<GraphModule>,
+    ) -> HashMap<String, GraphModule> {
         if let Some(deps) = self.dependencies.take_raw() {
             let mut resolved = HashMap::new();
+            let mut global_packages = HashMap::new();
 
             for dep in deps.iter() {
                 let specifier = &dep.specifier;
 
                 if let Some(dep_code_linking_section) = dep.code.clone() {
                     if let Some(module) = resolve(&dep_code_linking_section.specifier) {
+                        if self.specifier.scheme() == "file" && !specifier.starts_with(".") {
+                            global_packages.insert(specifier.clone(), module.clone());
+                        }
+
                         resolved.insert(specifier.clone(), module);
                     } else {
                         eprintln!(
@@ -235,6 +250,10 @@ impl ESMGraphModule {
             }
 
             self.dependencies.set_resolved(resolved).unwrap();
+
+            global_packages
+        } else {
+            HashMap::new()
         }
     }
 

@@ -27,6 +27,7 @@ import { fetchPackageMetadata, getLocalPackagePath, getRegistry, type NPMPackage
 import type { FullConfig } from "../config.ts";
 import { assert } from "@std/assert/assert";
 import { deno_info } from "../deno/info.ts";
+import { nodeProbe, nodeProbeAddition } from "./probe.ts";
 
 export class NPMCompiler {
     constructor(readonly config: FullConfig) { }
@@ -83,16 +84,17 @@ export class NPMCompiler {
 
                     return true;
                 })
-                .map(([e, i]) => {
+                .map(async ([e, i]) => {
                     const path = join(local_path, i);
-                    export_paths.set(e, join(local_path, output_magic, i));
-                    return path;
-                })
-                .map(async (path) => {
-                    // console.log(`entry point: ${path}`);
-                    await Deno.stat(path);
 
-                    return (path);
+                    const addition = await nodeProbeAddition(path);
+
+                    if (addition !== null) {
+                        export_paths.set(e, join(local_path, output_magic, i + addition));
+                        return path + addition;
+                    } else {
+                        throw new Error(`Failed to probe ${path}`);
+                    }
                 })),
             plugins: [
                 {
@@ -208,14 +210,15 @@ export class NPMCompiler {
                                     namespace: "npm-deps",
                                     external: true,
                                 };
-                            } else /* if (true) */ {
+                            } else if (subpath) {
                                 return {
                                     path: `${encodeURIComponent(`${dep_name}`)}/${subpath}`,
                                     namespace: "cjs-subpath-imports",
                                     external: false,
                                 };
-                                // } else {
-                                // throw new Error(`[56] Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
+                            } else {
+                                console.log(dep.exports);
+                                throw new Error(`[56] Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
                             }
                         });
                     },
@@ -248,6 +251,10 @@ export class NPMCompiler {
             metafile: true,
             minify: true,
             absWorkingDir: denoDir,
+            define: {
+                "process.env.NODE_ENV": JSON.stringify("production"),
+                "process.env.NODE_DEBUG": JSON.stringify(""),
+            }
         });
 
         if (package_name === "util") {
@@ -329,10 +336,15 @@ export class CompiledNPMPackage {
                 compiler_mapping.set(raw_export_name, path);
             }
         }
-        // console.log("metafile", build.metafile);
+        if (name.includes("xterm")) {
+            console.log("metafile", build.metafile);
+        }
         // console.log("mapped export paths", new Map(export_paths.entries().map(([e, path]) => [e, path.split(output_magic)[1]?.substring(1) ?? path])));
-        // console.log("compiler mapping", compiler_mapping);
-        // console.log("export paths", export_paths);
+        if (name === "function-bind") {
+
+            console.log("compiler mapping", compiler_mapping);
+            console.log("export paths", export_paths);
+        }
         this.exports = new Map(
             [...export_paths.entries()]
                 .map(([e, path]) => [e,
@@ -340,7 +352,14 @@ export class CompiledNPMPackage {
                         path
                             .split(output_magic)[1]
                             .substring(1)
-                            .replaceAll("\\", "/"))!]));
+                            .replaceAll("\\", "/"))] as const)
+                .map(([e, path]) => {
+                    if (path) {
+                        return [e, path] as const;
+                    } else {
+                        throw new Error(`Export "${e}" not found in ${this.name}@${format(this.version)}`);
+                    }
+                }));
 
         // console.log("exports", this.exports);
         for (const chunk of build.outputFiles ?? []) {
