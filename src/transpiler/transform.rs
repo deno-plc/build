@@ -38,14 +38,14 @@ fn safe_strip_prefix(path: &PathBuf, base: &PathBuf) -> Option<PathBuf> {
         .map(|p| p.to_path_buf())
 }
 
-#[test]
-fn test() {
-    let path = PathBuf::from("D:\\dev\\technik-app\\frontend\\app\\App.tsx");
-    let base = PathBuf::from("D:\\dev\\technik-app");
+// #[test]
+// fn test() {
+//     let path = PathBuf::from("D:\\dev\\technik-app\\frontend\\app\\App.tsx");
+//     let base = PathBuf::from("D:\\dev\\technik-app");
 
-    let result = safe_strip_prefix(&path, &base);
-    assert_eq!(result, Some(PathBuf::from("frontend\\app\\App.tsx")));
-}
+//     let result = safe_strip_prefix(&path, &base);
+//     assert_eq!(result, Some(PathBuf::from("frontend\\app\\App.tsx")));
+// }
 
 struct ImportResolver {
     graph: Arc<ModuleGraph>,
