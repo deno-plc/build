@@ -34,43 +34,6 @@ async fn main() {
 
     println!("Graph built");
 
-    // let code = read_to_string("../technik-app/frontend/dev.client.tsx")
-    //     .await
-    //     .expect("Failed to read file");
-
-    // let transform_pool = TransformPool::new();
-
-    // let res = transform_pool
-    //     .transform(TransformOptions {
-    //         code,
-    //         filename: specifier::ModuleSpecifier::from_file_path(
-    //             "D:/dev/technik-app/frontend/dev.client.tsx",
-    //         )
-    //         .unwrap(),
-    //         hmr: true,
-    //     })
-    //     .result()
-    //     .await
-    //     .unwrap();
-
-    // let res = spawn_blocking(|| transform_code(transpiler::transform::TransformOptions { code }))
-    //     .await
-    //     .unwrap();
-
-    // write("./test.js", res.full_code).await.unwrap();
-
-    // println!(
-    //     "Test: {:#?}",
-    //     graph
-    //         .root()
-    //         .unwrap()
-    //         .lookup_table()
-    //         .unwrap()
-    //         .iter()
-    //         .map(|(k, v)| (k.to_string(), v.specifier().to_string()))
-    //         .collect::<HashMap<_, _>>()
-    // );
-
     let listener = tokio::net::TcpListener::bind("[::1]:3000").await.unwrap();
 
     spawn(async move {
