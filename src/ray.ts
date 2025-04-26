@@ -27,7 +27,6 @@ export interface Ray {
 export class CanonicalRay implements Ray {
     readonly type = "canonical";
     constructor(readonly steps: string[]) {
-
     }
 
     to_canonical(): CanonicalRay {
@@ -40,7 +39,12 @@ export class CanonicalRay implements Ray {
 
     format(): string {
         if (tracing) {
-            return `Trace:\n${this.steps.map((step, i) => `${`[${i}]`.padStart(2, " ")} ${step}`).join("\n")}`;
+            return `Trace:\n${
+                this.steps.map((step, i) =>
+                    `${`[${i}]`.padStart(2, " ")} ${step}`
+                )
+                    .join("\n")
+            }`;
         } else {
             return `Set tracing = true to display a backtrace.`;
         }
@@ -50,7 +54,6 @@ export class CanonicalRay implements Ray {
 export class SparseRay implements Ray {
     readonly type = "sparse";
     constructor(readonly parent: Ray, readonly step: string) {
-
     }
 
     to_canonical(): CanonicalRay {

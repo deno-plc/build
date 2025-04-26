@@ -16,16 +16,25 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
 
     const app = new Hono();
 
-    app.get("/@module/error/:id", c => {
-        return new Response(`throw new Error(${JSON.stringify(`Failed to import module: ${decodeURIComponent(c.req.param("id"))}`)});`, {
-            headers: {
-                "Content-Type": "application/javascript;charset=UTF-8",
-                "Cache-Control": "no-store",
+    app.get("/@module/error/:id", (c) => {
+        return new Response(
+            `throw new Error(${
+                JSON.stringify(
+                    `Failed to import module: ${
+                        decodeURIComponent(c.req.param("id"))
+                    }`,
+                )
+            });`,
+            {
+                headers: {
+                    "Content-Type": "application/javascript;charset=UTF-8",
+                    "Cache-Control": "no-store",
+                },
             },
-        });
+        );
     });
 
-    app.get("/@module/:id", async c => {
+    app.get("/@module/:id", async (c) => {
         let module_id;
         try {
             module_id = new URL(decodeURIComponent(c.req.param("id")));
@@ -36,7 +45,7 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
         return await serveModule(module_id) ?? c.text("Module not found", 404);
     });
 
-    app.get("/@npm/:package/:version/:file", async c => {
+    app.get("/@npm/:package/:version/:file", async (c) => {
         const name = decodeURIComponent(c.req.param("package"));
         const version = parse(c.req.param("version"));
         let subpath = decodeURIComponent(c.req.param("file"));
@@ -52,7 +61,9 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
         }
 
         if (config.cdn.includes(name)) {
-            return c.redirect(new URL(`https://esm.sh/${name}@${format(version)}/${subpath}`));
+            return c.redirect(
+                new URL(`https://esm.sh/${name}@${format(version)}/${subpath}`),
+            );
         }
 
         const pkg_id: NPMPackage = {
@@ -64,15 +75,19 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
 
         const file = pkg.get_export(subpath);
 
-        return c.redirect(`/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`);
+        return c.redirect(
+            `/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`,
+        );
     });
 
-    app.get("/@npm/:package/:version", async c => {
+    app.get("/@npm/:package/:version", async (c) => {
         const name = decodeURIComponent(c.req.param("package"));
         const version = parse(c.req.param("version"));
 
         if (config.cdn.includes(name)) {
-            return c.redirect(new URL(`https://esm.sh/${name}@${format(version)}`));
+            return c.redirect(
+                new URL(`https://esm.sh/${name}@${format(version)}`),
+            );
         }
 
         const pkg_id: NPMPackage = {
@@ -88,12 +103,14 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
             return c.text("File not found", 404);
         }
 
-        return c.redirect(`/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`);
+        return c.redirect(
+            `/@npm-src/${encodeURIComponent(name)}/${format(version)}/${file}`,
+        );
     });
 
-    app.get("/@npm-src/:package/:version/*", async c => {
+    app.get("/@npm-src/:package/:version/*", async (c) => {
         const name = decodeURIComponent(c.req.param("package"));
-        const version = (c.req.param("version"));
+        const version = c.req.param("version");
         const url = new URL(c.req.url);
         const path = url.pathname.split(`${version}/`)[1];
 
@@ -116,7 +133,7 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
         }
     });
 
-    app.get("/@npm-data/*", async c => {
+    app.get("/@npm-data/*", async (c) => {
         const url = new URL(c.req.url);
 
         const path = url.pathname.split("/@npm-data/")[1];
@@ -133,7 +150,8 @@ export function deno_plc_build(config_options: BuildConfig = {}): Hono {
         const normalizedPath = normalize(url.pathname);
 
         if (normalizedPath.startsWith(".")) {
-            config.logger.warn`Path traversal attempt detected: requested='${url.pathname}' normalized='${normalizedPath}'`;
+            config.logger
+                .warn`Path traversal attempt detected: requested='${url.pathname}' normalized='${normalizedPath}'`;
             return c.text("Access denied", 403);
         }
 

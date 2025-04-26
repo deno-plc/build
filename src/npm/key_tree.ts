@@ -48,7 +48,6 @@ export class KeyTree {
                     }
                 }
             }
-
         } else {
             this.is_nullish = true;
         }

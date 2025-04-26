@@ -29,14 +29,21 @@ export const DenoModuleInfo = z.object({
 
     modules: z.unknown().array(),
 
-    redirects: z.record(z.string(), z.string()).transform(r => new Map(Object.entries(r))),
-    packages: z.record(z.string(), z.string()).transform(r => new Map(Object.entries(r))),
+    redirects: z.record(z.string(), z.string()).transform((r) =>
+        new Map(Object.entries(r))
+    ),
+    packages: z.record(z.string(), z.string()).transform((r) =>
+        new Map(Object.entries(r))
+    ),
 
-    npmPackages: z.record(z.string(), z.object({
-        name: z.string(),
-        version: z.string().transform(parse),
-        dependencies: z.string().array(),
-        registryUrl: z.string().transform((url) => new URL(url)),
-    }))
+    npmPackages: z.record(
+        z.string(),
+        z.object({
+            name: z.string(),
+            version: z.string().transform(parse),
+            dependencies: z.string().array(),
+            registryUrl: z.string().transform((url) => new URL(url)),
+        }),
+    ),
 });
 export type DenoModuleInfo = z.infer<typeof DenoModuleInfo>;

@@ -23,42 +23,62 @@ import { join } from "@std/path/join";
 import { PackageJson } from "./package_json.ts";
 import { toFileUrl } from "@std/path/to-file-url";
 import { assertEquals } from "@std/assert/equals";
-import { fetchPackageMetadata, getLocalPackagePath, getRegistry, type NPMPackage, npmToCanonical, parseNPMSpecifier } from "./package.ts";
+import {
+    fetchPackageMetadata,
+    type NPMPackage,
+    npmToCanonical,
+} from "./package.ts";
 import type { FullConfig } from "../config.ts";
 import { assert } from "@std/assert/assert";
 import { deno_info } from "../deno/info.ts";
-import { nodeProbe, nodeProbeAddition } from "./probe.ts";
+import { nodeProbeAddition } from "./probe.ts";
 
 export class NPMCompiler {
-    constructor(readonly config: FullConfig) { }
+    constructor(readonly config: FullConfig) {}
 
     #cache = new Map<string, CompiledNPMPackage>();
     #queue = new Map<string, Promise<CompiledNPMPackage>>();
 
-    async #compile(package_name: string, version: SemVer): Promise<CompiledNPMPackage> {
+    async #compile(
+        package_name: string,
+        version: SemVer,
+    ): Promise<CompiledNPMPackage> {
         // console.log(`Compiling npm:${package_name}@${format(version)}`);
         const { denoDir, npmCache } = await deno_info;
 
         if (package_name === "util") {
             console.log("compiling util");
-
         }
-        const metadata = await fetchPackageMetadata({ name: package_name, version });
+        const metadata = await fetchPackageMetadata({
+            name: package_name,
+            version,
+        });
         if (package_name === "util") {
             console.log("got util metadata");
         }
 
         const registry = metadata.registry_url.hostname;
 
-        const local_path = join(npmCache, registry, package_name, format(version));
+        const local_path = join(
+            npmCache,
+            registry,
+            package_name,
+            format(version),
+        );
 
-        const package_json = await PackageJson.load(toFileUrl(join(local_path, "package.json")));
+        const package_json = await PackageJson.load(
+            toFileUrl(join(local_path, "package.json")),
+        );
 
         if (package_name === "util") {
             console.log("got util packgae.json");
         }
 
-        assertEquals(package_json.raw_content.name, package_name, `Package name mismatch`);
+        assertEquals(
+            package_json.raw_content.name,
+            package_name,
+            `Package name mismatch`,
+        );
 
         const output_magic = crypto.randomUUID();
 
@@ -76,80 +96,97 @@ export class NPMCompiler {
         }
 
         const res = await esbuild.build({
-            entryPoints: await Promise.all([...package_json.export_map().entries()]
-                .filter(([e, i]) => {
-                    if (e.includes("*") || e.endsWith("package.json") || i.endsWith("package.json") || e.endsWith(".css")) {
-                        return false;
-                    }
+            entryPoints: await Promise.all(
+                [...package_json.export_map().entries()]
+                    .filter(([e, i]) => {
+                        if (
+                            e.includes("*") || e.endsWith("package.json") ||
+                            i.endsWith("package.json") || e.endsWith(".css")
+                        ) {
+                            return false;
+                        }
 
-                    return true;
-                })
-                .map(async ([e, i]) => {
-                    const path = join(local_path, i);
+                        return true;
+                    })
+                    .map(async ([e, i]) => {
+                        const path = join(local_path, i);
 
-                    const addition = await nodeProbeAddition(path);
+                        const addition = await nodeProbeAddition(path);
 
-                    if (addition !== null) {
-                        export_paths.set(e, join(local_path, output_magic, i + addition));
-                        return path + addition;
-                    } else {
-                        throw new Error(`Failed to probe ${path}`);
-                    }
-                })),
+                        if (addition !== null) {
+                            export_paths.set(
+                                e,
+                                join(local_path, output_magic, i + addition),
+                            );
+                            return path + addition;
+                        } else {
+                            throw new Error(`Failed to probe ${path}`);
+                        }
+                    }),
+            ),
             plugins: [
                 {
                     name: "self-reference",
                     setup(build) {
-                        build.onResolve({ filter: new RegExp(`^${package_name}(\/|$)`) }, (args) => {
-                            const spec = args.path;
+                        build.onResolve(
+                            { filter: new RegExp(`^${package_name}(\/|$)`) },
+                            (args) => {
+                                const spec = args.path;
 
-                            if (spec === package_name) {
-                                const mapped = package_json.export_map().get(".");
+                                if (spec === package_name) {
+                                    const mapped = package_json.export_map()
+                                        .get(".");
 
-                                if (!mapped) {
-                                    return {
-                                        errors: [
-                                            {
-                                                text: `[resolving self-references] Package ${package_name} does not export "."`,
-                                                location: {
-                                                    file: args.importer,
-                                                }
-                                            }
-                                        ]
-                                    };
-                                } else {
-                                    return {
-                                        path: join(local_path, mapped),
-                                        namespace: "file",
-                                    };
+                                    if (!mapped) {
+                                        return {
+                                            errors: [
+                                                {
+                                                    text:
+                                                        `[resolving self-references] Package ${package_name} does not export "."`,
+                                                    location: {
+                                                        file: args.importer,
+                                                    },
+                                                },
+                                            ],
+                                        };
+                                    } else {
+                                        return {
+                                            path: join(local_path, mapped),
+                                            namespace: "file",
+                                        };
+                                    }
+                                } else if (
+                                    spec.startsWith(`${package_name}/`)
+                                ) {
+                                    const subpath = "./" +
+                                        spec.slice(package_name.length + 1);
+                                    const mapped = package_json.export_map()
+                                        .get(subpath);
+
+                                    if (!mapped) {
+                                        return {
+                                            errors: [
+                                                {
+                                                    text:
+                                                        `[resolving self-references] Package ${package_name} does not export "${subpath}"`,
+                                                    location: {
+                                                        file: args.importer,
+                                                    },
+                                                },
+                                            ],
+                                        };
+                                    } else {
+                                        return {
+                                            path: join(local_path, mapped),
+                                            namespace: "file",
+                                        };
+                                    }
                                 }
-                            } else if (spec.startsWith(`${package_name}/`)) {
-                                const subpath = "./" + spec.slice(package_name.length + 1);
-                                const mapped = package_json.export_map().get(subpath);
 
-                                if (!mapped) {
-                                    return {
-                                        errors: [
-                                            {
-                                                text: `[resolving self-references] Package ${package_name} does not export "${subpath}"`,
-                                                location: {
-                                                    file: args.importer,
-                                                }
-                                            }
-                                        ]
-                                    };
-                                } else {
-                                    return {
-                                        path: join(local_path, mapped),
-                                        namespace: "file",
-                                    };
-                                }
-                            }
-
-
-                            return {};
-                        });
-                    }
+                                return {};
+                            },
+                        );
+                    },
                 },
                 {
                     name: "npm package dependencies",
@@ -172,7 +209,10 @@ export class NPMCompiler {
                             let subpath_index = -1;
 
                             if (spec.startsWith("@")) {
-                                subpath_index = spec.indexOf("/", spec.indexOf("/", 1) + 1);
+                                subpath_index = spec.indexOf(
+                                    "/",
+                                    spec.indexOf("/", 1) + 1,
+                                );
                             } else {
                                 subpath_index = spec.indexOf("/", 1);
                             }
@@ -185,11 +225,17 @@ export class NPMCompiler {
 
                             const dep_name = spec.slice(0, subpath_index);
 
-                            const dep_version = metadata.dependencies.get(dep_name);
+                            const dep_version = metadata.dependencies.get(
+                                dep_name,
+                            );
 
                             if (!dep_version) {
                                 return {
-                                    path: `/@module/error/${encodeURIComponent(`Package ${dep_name} not found in dependencies of ${package_name}`)}`,
+                                    path: `/@module/error/${
+                                        encodeURIComponent(
+                                            `Package ${dep_name} not found in dependencies of ${package_name}`,
+                                        )
+                                    }`,
                                     namespace: "error-fake-url",
                                     external: true,
                                 };
@@ -200,25 +246,35 @@ export class NPMCompiler {
                                 version: dep_version,
                             });
 
-                            const exp = dep.get_export(subpath ? `./${subpath}` : ".");
+                            const exp = dep.get_export(
+                                subpath ? `./${subpath}` : ".",
+                            );
 
                             // assert(exp, `Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
 
                             if (exp) {
                                 return {
-                                    path: `/@npm-src/${encodeURIComponent(dep_name)}/${format(dep_version)}/${exp}`,
+                                    path: `/@npm-src/${
+                                        encodeURIComponent(dep_name)
+                                    }/${format(dep_version)}/${exp}`,
                                     namespace: "npm-deps",
                                     external: true,
                                 };
                             } else if (subpath) {
                                 return {
-                                    path: `${encodeURIComponent(`${dep_name}`)}/${subpath}`,
+                                    path: `${
+                                        encodeURIComponent(`${dep_name}`)
+                                    }/${subpath}`,
                                     namespace: "cjs-subpath-imports",
                                     external: false,
                                 };
                             } else {
                                 console.log(dep.exports);
-                                throw new Error(`[56] Export "${subpath}" not found in ${dep_name}@${format(dep_version)}`);
+                                throw new Error(
+                                    `[56] Export "${subpath}" not found in ${dep_name}@${
+                                        format(dep_version)
+                                    }`,
+                                );
                             }
                         });
                     },
@@ -226,19 +282,27 @@ export class NPMCompiler {
                 {
                     name: "commonjs subpath imports",
                     setup(build) {
-                        build.onLoad({ namespace: "cjs-subpath-imports", filter: /./ }, async args => {
-                            const spec = args.path;
+                        build.onLoad(
+                            { namespace: "cjs-subpath-imports", filter: /./ },
+                            (args) => {
+                                const spec = args.path;
 
-                            const parts = spec.split("/");
-                            const import_id = decodeURIComponent(parts.shift()!);
+                                const parts = spec.split("/");
+                                const import_id = decodeURIComponent(
+                                    parts.shift()!,
+                                );
 
-                            const code = `import * as $mod from "${import_id}"; const $exp = $mod.${parts.join(".")}; export default $exp;`;
+                                const code =
+                                    `import * as $mod from "${import_id}"; const $exp = $mod.${
+                                        parts.join(".")
+                                    }; export default $exp;`;
 
-                            return {
-                                contents: code,
-                                loader: "js",
-                            } satisfies esbuild.OnLoadResult;
-                        });
+                                return {
+                                    contents: code,
+                                    loader: "js",
+                                } satisfies esbuild.OnLoadResult;
+                            },
+                        );
                     },
                 },
             ],
@@ -254,7 +318,7 @@ export class NPMCompiler {
             define: {
                 "process.env.NODE_ENV": JSON.stringify("production"),
                 "process.env.NODE_DEBUG": JSON.stringify(""),
-            }
+            },
         });
 
         if (package_name === "util") {
@@ -263,11 +327,22 @@ export class NPMCompiler {
 
         for (const chunk of res.outputFiles) {
             assert(chunk.path.startsWith(outdir));
-            const _filename = chunk.path.substring(outdir.length + 1).replace(/\\/g, "/");
+            const _filename = chunk.path.substring(outdir.length + 1).replace(
+                /\\/g,
+                "/",
+            );
             // console.log(`${filename}: ${chunk.contents.length} bytes ${chunk.hash}`);
         }
 
-        return new CompiledNPMPackage(package_name, version, res, denoDir, registry, export_paths, output_magic);
+        return new CompiledNPMPackage(
+            package_name,
+            version,
+            res,
+            denoDir,
+            registry,
+            export_paths,
+            output_magic,
+        );
     }
 
     async get_compiled(pkg: NPMPackage): Promise<CompiledNPMPackage> {
@@ -280,18 +355,18 @@ export class NPMCompiler {
             return await this.#queue.get(canonical)!;
         }
         this.config.logger.info`Compiling npm:${canonical}`;
-        let resolve: (r: CompiledNPMPackage) => void = () => { };
+        let resolve: (r: CompiledNPMPackage) => void = () => {};
 
-        const promise = new Promise<CompiledNPMPackage>(r => {
+        const promise = new Promise<CompiledNPMPackage>((r) => {
             resolve = r;
         });
 
         this.#queue.set(canonical, promise);
 
-        const res = await this.#compile(pkg.name, pkg.version).catch(e => {
+        const res = await this.#compile(pkg.name, pkg.version).catch((e) => {
             this.config.logger.error`Failed to compile npm:${canonical}: ${e}`;
             // block
-            return new Promise<CompiledNPMPackage>(_resolve => { });
+            return new Promise<CompiledNPMPackage>((_resolve) => {});
         });
 
         this.#cache.set(canonical, res);
@@ -302,7 +377,7 @@ export class NPMCompiler {
 
         // this.config.logger.info`Successfully compiled npm:${canonical}`;
         return res;
-    };
+    }
 }
 
 export class CompiledNPMPackage {
@@ -341,29 +416,42 @@ export class CompiledNPMPackage {
         }
         // console.log("mapped export paths", new Map(export_paths.entries().map(([e, path]) => [e, path.split(output_magic)[1]?.substring(1) ?? path])));
         if (name === "function-bind") {
-
             console.log("compiler mapping", compiler_mapping);
             console.log("export paths", export_paths);
         }
         this.exports = new Map(
             [...export_paths.entries()]
-                .map(([e, path]) => [e,
-                    compiler_mapping.get(
-                        path
-                            .split(output_magic)[1]
-                            .substring(1)
-                            .replaceAll("\\", "/"))] as const)
+                .map(([e, path]) =>
+                    [
+                        e,
+                        compiler_mapping.get(
+                            path
+                                .split(output_magic)[1]
+                                .substring(1)
+                                .replaceAll("\\", "/"),
+                        ),
+                    ] as const
+                )
                 .map(([e, path]) => {
                     if (path) {
                         return [e, path] as const;
                     } else {
-                        throw new Error(`Export "${e}" not found in ${this.name}@${format(this.version)}`);
+                        throw new Error(
+                            `Export "${e}" not found in ${this.name}@${
+                                format(this.version)
+                            }`,
+                        );
                     }
-                }));
+                }),
+        );
 
         // console.log("exports", this.exports);
         for (const chunk of build.outputFiles ?? []) {
-            const path = chunk.path.split(output_magic)[1].substring(1).replaceAll("\\", "/");
+            const path = chunk.path.split(output_magic)[1].substring(1)
+                .replaceAll(
+                    "\\",
+                    "/",
+                );
             this.files.set(path, chunk);
             // console.log(`File: ${path} (${chunk.contents.length} bytes)`);
         }
@@ -379,8 +467,6 @@ export class CompiledNPMPackage {
         return this.files.get(path) ?? null;
     }
 }
-
-
 
 // export async function compileNPMPackage(package_name: string, version: SemVer) {
 //     const local_path = await getLocalPackagePath(package_name, version);
@@ -453,7 +539,6 @@ export class CompiledNPMPackage {
 //                             }
 //                         }
 
-
 //                         return {};
 //                     });
 //                 }
@@ -480,5 +565,3 @@ export class CompiledNPMPackage {
 
 //     // res.
 // }
-
-

@@ -1,4 +1,3 @@
-import { assert } from "@std/assert/assert";
 import { parseNPMSpecifier } from "./package.ts";
 import { format } from "@std/semver";
 import { assertEquals } from "@std/assert/equals";

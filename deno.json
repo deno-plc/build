@@ -1,6 +1,16 @@
 {
     "name": "@deno-plc/build",
     "version": "0.0.1",
+    "tasks": {
+        "check": "deno fmt && deno lint --fix && deno test -A",
+        "check-ci": "deno fmt --check && deno lint && deno test -A"
+    },
+    "fmt": {
+        "indentWidth": 4,
+        "exclude": [
+            ".github/workflows"
+        ]
+    },
     "exports": {
         ".": "./mod.ts"
     },

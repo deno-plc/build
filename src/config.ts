@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+ */
 
 import { getLogger, type Logger } from "@logtape/logtape";
 import { join } from "@std/path/join";
@@ -23,12 +23,12 @@ import { isAbsolute } from "@std/path/is-absolute";
 
 export interface BuildConfig {
     bundler_path_prefix?: string;
-    logger?: Logger,
-    root?: string,
+    logger?: Logger;
+    root?: string;
     /**
      * List of npm packages that are redirected to esm.sh
      */
-    cdn?: string[],
+    cdn?: string[];
 }
 
 export type FullConfig = Required<BuildConfig>;
@@ -41,7 +41,8 @@ export function config_defaults(config: BuildConfig): FullConfig {
 
         ...config,
 
-        root: isAbsolute(config.root ?? ".") ? config.root! : join(Deno.cwd(), config.root ?? "."),
+        root: isAbsolute(config.root ?? ".")
+            ? config.root!
+            : join(Deno.cwd(), config.root ?? "."),
     };
 }
-

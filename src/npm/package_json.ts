@@ -43,13 +43,22 @@ export const tree = new KeyTree();
 export class PackageJson {
     ray: Ray;
     constructor(readonly raw_content: WeakPackageJson, readonly path: URL) {
-        this.ray = new CanonicalRay(["package.json", `package: ${this.raw_content.name}@${format(this.raw_content.version)}`, `path: ${this.path.href}`]);
+        this.ray = new CanonicalRay([
+            "package.json",
+            `package: ${this.raw_content.name}@${
+                format(this.raw_content.version)
+            }`,
+            `path: ${this.path.href}`,
+        ]);
         if (this.raw_content.exports) {
             tree.append(this.raw_content.exports, this.ray);
         }
     }
     public static async load(path: URL) {
-        return new PackageJson(WeakPackageJson.parse(JSON.parse(await Deno.readTextFile(path))), path);
+        return new PackageJson(
+            WeakPackageJson.parse(JSON.parse(await Deno.readTextFile(path))),
+            path,
+        );
     }
     #export_map: Map<string, string> | undefined;
 
@@ -70,14 +79,18 @@ export class PackageJson {
                 }
             };
 
-            const main_res = parse_export_level(this.raw_content.exports, report, this.ray);
+            const main_res = parse_export_level(
+                this.raw_content.exports,
+                report,
+                this.ray,
+            );
 
             if (!this.#export_map.has(".") && main_res) {
                 this.#export_map.set(".", main_res);
             }
         } else {
             this.export_type = "commonjs";
-            const main = parse_export_level(this.raw_content, (_, __, ray) => {
+            const main = parse_export_level(this.raw_content, (_, __, _ray) => {
                 // throw new Error(`Unexpected export map without exports\n${ray.to_canonical().format()}`);
             }, this.ray);
             if (main) {
@@ -91,7 +104,11 @@ export class PackageJson {
     }
 }
 
-function parse_export_level(src: unknown, report_entry: (id: string, res: string, ray: Ray) => void, ray: Ray): string | null {
+function parse_export_level(
+    src: unknown,
+    report_entry: (id: string, res: string, ray: Ray) => void,
+    ray: Ray,
+): string | null {
     if (typeof src === "string") {
         if (src.startsWith(".")) {
             return src;
@@ -101,7 +118,11 @@ function parse_export_level(src: unknown, report_entry: (id: string, res: string
     } else if (Array.isArray(src)) {
         let i = 0;
         for (const item of src) {
-            const res = parse_export_level(item, report_entry, tracing ? new SparseRay(ray, `.[${i}]`) : ray);
+            const res = parse_export_level(
+                item,
+                report_entry,
+                tracing ? new SparseRay(ray, `.[${i}]`) : ray,
+            );
             if (res) {
                 return res;
             }
@@ -110,18 +131,37 @@ function parse_export_level(src: unknown, report_entry: (id: string, res: string
     } else if (typeof src === "object" && src !== null) {
         for (const [key, value] of Object.entries(src)) {
             if (key.startsWith(".")) {
-                const entry_ray = tracing ? new SparseRay(ray, `Entry: ${key}`) : ray;
+                const entry_ray = tracing
+                    ? new SparseRay(ray, `Entry: ${key}`)
+                    : ray;
                 const res = parse_export_level(value, (id: string) => {
-                    throw new Error(`FatalError: Nested exports are not allowed: (parent=${key}, key=${id})\n${entry_ray.to_canonical().format()}`);
+                    throw new Error(
+                        `FatalError: Nested exports are not allowed: (parent=${key}, key=${id})\n${entry_ray.to_canonical().format()}`,
+                    );
                 }, entry_ray);
                 if (res) {
                     report_entry(key, res, entry_ray);
                 }
             }
         }
-        for (const t of ["import", "module", "browser", "deno", "require", "node", "main", "default"]) {
+        for (
+            const t of [
+                "import",
+                "module",
+                "browser",
+                "deno",
+                "require",
+                "node",
+                "main",
+                "default",
+            ]
+        ) {
             if (t in src) {
-                const res = parse_export_level((src as Record<string, unknown>)[t], report_entry, tracing ? new SparseRay(ray, `.'${t}'`) : ray);
+                const res = parse_export_level(
+                    (src as Record<string, unknown>)[t],
+                    report_entry,
+                    tracing ? new SparseRay(ray, `.'${t}'`) : ray,
+                );
                 if (res) {
                     return res;
                 }

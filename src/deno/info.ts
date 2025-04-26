@@ -27,7 +27,10 @@ export const DenoGenericInfo = z.object({
 });
 export type DenoGenericInfo = z.infer<typeof DenoGenericInfo>;
 
-export async function getDenoInfo<S extends z.ZodType>(schema: S, entrypoint?: string): Promise<z.infer<S>> {
+export async function getDenoInfo<S extends z.ZodType>(
+    schema: S,
+    entrypoint?: string,
+): Promise<z.infer<S>> {
     const info = await new Deno.Command(Deno.execPath(), {
         args: ["info", "--json", entrypoint ?? ""].filter(Boolean),
         stdout: "piped",

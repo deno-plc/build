@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
-*/
+ */
 
 import { format } from "@std/semver/format";
 import type { SemVer } from "@std/semver/types";
@@ -32,7 +32,9 @@ export type NPMPackage = z.infer<typeof NPMPackage>;
 
 export const NPMPackageMetadata = z.object({
     registry_url: z.string().transform((url) => new URL(url)),
-    dependencies: z.array(NPMPackage).transform(deps => new Map(deps.map(dep => [dep.name, dep.version]))),
+    dependencies: z.array(NPMPackage).transform((deps) =>
+        new Map(deps.map((dep) => [dep.name, dep.version]))
+    ),
 });
 export type NPMPackageMetadata = z.infer<typeof NPMPackageMetadata>;
 
@@ -40,9 +42,12 @@ export function npmToCanonical(pkg: NPMPackage) {
     return `${pkg.name}@${format(pkg.version)}`;
 }
 
-export function parseNPMSpecifier(specifier: string): [NPMPackage, string | undefined] {
+export function parseNPMSpecifier(
+    specifier: string,
+): [NPMPackage, string | undefined] {
     const parts = specifier.split("/");
-    const package_id = (parts[0][0] === "@" ? parts.shift()! + "/" : "") + parts.shift()!;
+    const package_id = (parts[0][0] === "@" ? parts.shift()! + "/" : "") +
+        parts.shift()!;
     const at_pos = package_id.indexOf("@", 1);
     const name = package_id.slice(0, at_pos);
     const version = package_id.slice(at_pos + 1);
@@ -64,19 +69,29 @@ export async function fetchPackageMetadata(pkg: NPMPackage) {
         const data = await response.json();
         return NPMPackageMetadata.parse(data);
     } else {
-        throw new Error(`Failed to fetch package metadata: ${response.statusText}`);
+        throw new Error(
+            `Failed to fetch package metadata: ${response.statusText}`,
+        );
     }
 }
 
 /**
  * This is currently a stub, custom registries are not supported yet.
- * 
+ *
  * Registry information is available in graph/mod.rs::NPMPackage.registry_url
  */
 export function getRegistry(_package_name: string, _version: SemVer) {
     return Promise.resolve("registry.npmjs.org");
 }
 
-export async function getLocalPackagePath(package_name: string, version: SemVer) {
-    return join((await deno_info).npmCache, await getRegistry(package_name, version), package_name, format(version));
+export async function getLocalPackagePath(
+    package_name: string,
+    version: SemVer,
+) {
+    return join(
+        (await deno_info).npmCache,
+        await getRegistry(package_name, version),
+        package_name,
+        format(version),
+    );
 }
