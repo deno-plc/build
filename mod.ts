@@ -9,7 +9,7 @@ import { assert } from "node:console";
 import { deno_info } from "./src/deno/info.ts";
 import { serveFile } from "@std/http/file-server";
 
-export function deno_plc_build(config_options: BuildConfig = {}): Hono {
+export function dev_server(config_options: BuildConfig = {}): Hono {
     const config = config_defaults(config_options);
 
     const npm_compiler = new NPMCompiler(config);

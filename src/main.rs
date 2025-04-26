@@ -1,30 +1,35 @@
 pub mod api;
+mod config;
 pub mod deno;
 pub mod graph;
 pub mod npm;
 pub mod specifier;
 pub mod transpiler;
-use std::{env, sync::Arc};
+use std::{
+    net::{IpAddr, Ipv6Addr, SocketAddr},
+    path::PathBuf,
+    sync::Arc,
+};
 
-// use tokio::fs::{read_to_string, write};
-use crate::specifier::ModuleSpecifier;
 use api::router;
+use config::Config;
 use deno::info::call_deno_info;
 use graph::ModuleGraph;
-use path_clean::PathClean;
 use tokio::{signal, spawn};
 
 #[tokio::main]
 async fn main() {
-    let root_dir = env::current_dir().unwrap().join("../technik-app").clean();
+    let config: Config = config::from_args();
+
+    let root_dir = PathBuf::from(config.root_path);
 
     let mut graph = ModuleGraph::new();
 
-    let root = ModuleSpecifier::from_file_path(root_dir.join("frontend/dev.client.tsx")).unwrap();
-
     println!("Retrieving graph");
 
-    let info = call_deno_info("deno", &root_dir, &root).await.unwrap();
+    let info = call_deno_info("deno", &root_dir, &config.entrypoint)
+        .await
+        .unwrap();
 
     println!("Processing graph");
 
@@ -34,10 +39,15 @@ async fn main() {
 
     println!("Graph built");
 
-    let listener = tokio::net::TcpListener::bind("[::1]:3000").await.unwrap();
+    let listener = tokio::net::TcpListener::bind(SocketAddr::new(
+        IpAddr::V6(Ipv6Addr::LOCALHOST),
+        config.port,
+    ))
+    .await
+    .unwrap();
 
     spawn(async move {
-        println!("Listening on http://localhost:3000");
+        println!("Listening on http://localhost:{}", config.port);
         axum::serve(listener, router(graph)).await.unwrap();
     });
 
