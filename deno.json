@@ -28,5 +28,17 @@
     },
     "exclude": [
         "dist"
-    ]
+    ],
+    "publish": {
+        "include": [
+            "LICENSE",
+            "README.md",
+            "deno.json",
+            "deno.lock",
+            "**/*.ts"
+        ],
+        "exclude": [
+            "**/*.test.ts"
+        ]
+    }
 }
