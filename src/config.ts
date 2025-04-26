@@ -22,9 +22,37 @@ import { join } from "@std/path/join";
 import { isAbsolute } from "@std/path/is-absolute";
 
 export interface BuildConfig {
-    bundler_path_prefix?: string;
     logger?: Logger;
-    root?: string;
+    /**
+     * Path from which the dev server urls are resolved.
+     */
+    dev_server_root?: string;
+
+    /**
+     * Path to the root directory of the project. This is the CWD for the deno commands
+     */
+    root_dir?: string;
+
+    /**
+     * Path to a module that imports everything thats needed, not necessarily part of the application
+     */
+    root_module: URL;
+
+    /**
+     * Entrypoint for build
+     */
+    entrypoint?: URL;
+
+    /**
+     * Port for the graph server to use (this is not the dev server)
+     */
+    graph_server_port?: number;
+
+    /**
+     * Set this to false to bring your own graph server
+     */
+    run_graph_server?: boolean;
+
     /**
      * List of npm packages that are redirected to esm.sh
      */
@@ -33,16 +61,34 @@ export interface BuildConfig {
 
 export type FullConfig = Required<BuildConfig>;
 
+function toAbsolute(path?: string): string {
+    if (isAbsolute(path ?? ".")) {
+        return path!;
+    } else {
+        return join(Deno.cwd(), path ?? ".");
+    }
+}
+
 export function config_defaults(config: BuildConfig): FullConfig {
+    const root_dir = toAbsolute(config.root_dir);
     return {
-        bundler_path_prefix: "/@id/",
         logger: getLogger(["app", "deno-plc", "build"]),
         cdn: [],
+        graph_server_port: 3000,
+        entrypoint: config.root_module,
+        run_graph_server: true,
 
         ...config,
 
-        root: isAbsolute(config.root ?? ".")
-            ? config.root!
-            : join(Deno.cwd(), config.root ?? "."),
+        root_dir,
+        dev_server_root: toAbsolute(config.dev_server_root ?? root_dir),
     };
+}
+
+export function toServerConfig(config: FullConfig): string {
+    return JSON.stringify({
+        port: config.graph_server_port,
+        root_path: config.root_dir,
+        entrypoint: config.root_module.href,
+    });
 }

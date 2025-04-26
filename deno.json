@@ -16,6 +16,7 @@
     },
     "imports": {
         "@deno-plc/utils": "jsr:@deno-plc/utils@^0.2.0",
+        "@denosaurs/cache": "jsr:@denosaurs/cache@^0.2.15",
         "@std/http": "jsr:@std/http@^1.0.14",
         "hono": "jsr:@hono/hono@^4.7.6",
         "@logtape/logtape": "jsr:@logtape/logtape@^0.9.0",

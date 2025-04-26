@@ -7,7 +7,7 @@ use crate::specifier::ModuleSpecifier;
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Config {
     pub root_path: String,
-    pub entrypoint: ModuleSpecifier,
+    pub root_module: ModuleSpecifier,
     pub port: u16,
 }
 
@@ -22,7 +22,7 @@ pub fn from_args() -> Config {
             let root_path = env::current_dir().unwrap().join("../technik-app");
             Config {
                 root_path: root_path.to_string_lossy().to_string(),
-                entrypoint: ModuleSpecifier::from_file_path(
+                root_module: ModuleSpecifier::from_file_path(
                     root_path.join("frontend/dev.client.tsx"),
                 )
                 .unwrap(),

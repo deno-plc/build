@@ -8,9 +8,14 @@ import { NPMCompiler } from "./src/npm/compiler.ts";
 import { assert } from "node:console";
 import { deno_info } from "./src/deno/info.ts";
 import { serveFile } from "@std/http/file-server";
+import { run_graph_server } from "./src/graph/server.ts";
 
-export function dev_server(config_options: BuildConfig = {}): Hono {
+export function dev_server(config_options: BuildConfig): Hono {
     const config = config_defaults(config_options);
+
+    if (config.run_graph_server) {
+        run_graph_server(config);
+    }
 
     const npm_compiler = new NPMCompiler(config);
 
@@ -155,7 +160,9 @@ export function dev_server(config_options: BuildConfig = {}): Hono {
             return c.text("Access denied", 403);
         }
 
-        const module_id = toFileUrl(join(config.root, normalizedPath));
+        const module_id = toFileUrl(
+            join(config.dev_server_root, normalizedPath),
+        );
 
         return (await serveModule(module_id)) ?? await next();
     });

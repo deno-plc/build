@@ -27,7 +27,7 @@ async fn main() {
 
     println!("Retrieving graph");
 
-    let info = call_deno_info("deno", &root_dir, &config.entrypoint)
+    let info = call_deno_info("deno", &root_dir, &config.root_module)
         .await
         .unwrap();
 
@@ -47,7 +47,7 @@ async fn main() {
     .unwrap();
 
     spawn(async move {
-        println!("Listening on http://localhost:{}", config.port);
+        println!("Graph server listening on http://localhost:{}", config.port);
         axum::serve(listener, router(graph)).await.unwrap();
     });
 
