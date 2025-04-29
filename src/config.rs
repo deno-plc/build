@@ -16,7 +16,7 @@ pub fn from_args() -> Config {
 
     let cfg_type = args.get(1).expect("No config specified");
 
-    match cfg_type.as_str() {
+    let cfg = match cfg_type.as_str() {
         "--json" => serde_json::from_str(args.get(2).unwrap()).unwrap(),
         "--technik-app" => {
             let root_path = env::current_dir().unwrap().join("../technik-app");
@@ -32,5 +32,16 @@ pub fn from_args() -> Config {
         _ => {
             panic!("Invalid config type")
         }
-    }
+    };
+
+    println!(
+        "             INF app·deno-plc·build root_path = {}",
+        cfg.root_path
+    );
+    println!(
+        "             INF app·deno-plc·build root_module = {}",
+        cfg.root_module
+    );
+
+    cfg
 }

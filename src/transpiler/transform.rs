@@ -191,7 +191,9 @@ impl Fold for ImportResolver {
                 }
             }
             // These do not contain an import path
-            ModuleDecl::ExportDecl(_) | ModuleDecl::ExportDefaultDecl(_) => {}
+            ModuleDecl::ExportDecl(_)
+            | ModuleDecl::ExportDefaultDecl(_)
+            | ModuleDecl::ExportDefaultExpr(_) => {}
             rem => {
                 println!("Module Decl: {:?}, Ctx: {}", rem, self.module.specifier());
             }

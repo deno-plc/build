@@ -127,10 +127,6 @@ impl ModuleGraph {
                 _ => {}
             }
         }
-
-        for (id, module) in &self.global_package_imports {
-            println!("Global package import: {} -> {}", id, module.specifier());
-        }
     }
 
     pub fn get_module(&self, specifier: &ModuleSpecifier) -> Option<GraphModule> {

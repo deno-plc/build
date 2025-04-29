@@ -54,6 +54,11 @@ export interface BuildConfig {
     run_graph_server?: boolean;
 
     /**
+     * for development only: run the graph server using cargo
+     */
+    dev_use_cargo?: boolean;
+
+    /**
      * List of npm packages that are redirected to esm.sh
      */
     cdn?: string[];
@@ -77,6 +82,7 @@ export function config_defaults(config: BuildConfig): FullConfig {
         graph_server_port: 3000,
         entrypoint: config.root_module,
         run_graph_server: true,
+        dev_use_cargo: false,
 
         ...config,
 
@@ -89,6 +95,6 @@ export function toServerConfig(config: FullConfig): string {
     return JSON.stringify({
         port: config.graph_server_port,
         root_path: config.root_dir,
-        entrypoint: config.root_module.href,
+        root_module: config.root_module.href,
     });
 }
