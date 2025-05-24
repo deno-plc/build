@@ -27,9 +27,13 @@ async fn main() {
 
     println!("Retrieving graph");
 
-    let info = call_deno_info("deno", &root_dir, &config.root_module)
-        .await
-        .unwrap();
+    let info = match call_deno_info("deno", &root_dir, &config.root_module).await {
+        Ok(info) => info,
+        Err(err) => {
+            eprintln!("Error retrieving graph:\n{}", err);
+            return;
+        }
+    };
 
     println!("Processing graph");
 

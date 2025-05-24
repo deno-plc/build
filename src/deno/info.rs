@@ -7,7 +7,7 @@ use crate::specifier::ModuleSpecifier;
 use serde::Deserialize;
 use url::Url;
 
-use super::media_type::MediaType;
+use super::{info_preflight::PreflightInfo, media_type::MediaType};
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -137,15 +137,43 @@ pub async fn call_deno_info(
         ));
     }
 
-    let info: DenoInfo = serde_json::from_slice(&output.stdout)
-        .map_err(|e| format!("Failed to parse deno info output: {}", e))?;
+    let info: Result<DenoInfo, _> = serde_json::from_slice(&output.stdout);
 
-    if info.version != 1 {
-        return Err(format!(
-            "Unsupported deno info schema version: {}",
-            info.version
-        ));
+    match info {
+        Ok(info) => {
+            if info.version != 1 {
+                Err(format!(
+                    "Unsupported deno info schema version: {}",
+                    info.version
+                ))
+            } else {
+                Ok(info)
+            }
+        }
+        Err(e) => {
+            let preflight: Result<PreflightInfo, _> = serde_json::from_slice(&output.stdout);
+
+            let diagnostics: String = if let Ok(preflight_info) = preflight {
+                preflight_info
+                    .modules
+                    .iter()
+                    .map(|m| m.diagnostics())
+                    .flatten()
+                    .collect::<Vec<_>>()
+                    .join("\n")
+                    .to_string()
+            } else {
+                String::new()
+            };
+
+            if diagnostics.len() > 0 {
+                Err(format!(
+                    "Failed to parse deno info output:\n{}\nOriginal error:\n{}",
+                    diagnostics, e,
+                ))
+            } else {
+                Err(format!("Failed to parse deno info output: {}", e))
+            }
+        }
     }
-
-    Ok(info)
 }
